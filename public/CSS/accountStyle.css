@@ -1,0 +1,29 @@
+#accountModal {
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(1px);
+}
+
+.backgroundModalAccount {
+    background-color: white;
+    width: 50%;
+    height: auto;
+}
+label{
+    color: black;
+}
+
+#closeModalAccount{
+    margin-right: 24px;
+}
+
+#closeModalAccount svg:hover{
+    color: red;
+}
+
+#addAccountButton{
+    background-color: rgb(39, 155, 7);
+}
+
+#addAccountButton:hover{
+    background-color: rgb(46, 182, 8);
+}
