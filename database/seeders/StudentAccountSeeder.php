@@ -4,30 +4,29 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 use Faker\Factory as Faker;
 
 class StudentAccountSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
-    public function run(): void
+    public function run()
     {
         $faker = Faker::create();
-        $data = [];
 
-        for ($i = 1; $i <= 1000; $i++) {
-            $data[] = [
-                'account_id' => $i,
-                'student_id' => $i,
+        $accounts = [];
+
+        for ($i = 0; $i < 1000; $i++) {
+            $accounts[] = [
+                'student_id' => $faker->unique()->numberBetween(1, 1000),
                 'username' => $faker->unique()->userName,
-                'password' => Hash::make('password123'),
+                'password' => bcrypt('password'), // Use bcrypt for password hashing
                 'email' => $faker->unique()->safeEmail,
-                'created_at' => $faker->dateTimeBetween('-1 years', 'now'),
+                'created_at' => $faker->dateTimeThisYear()->format('Y-m-d H:i:s'), // Format timestamp properly
+                'account_status' => $faker->randomElement(['active']),
             ];
         }
 
-        DB::table('student_account')->insert($data);
+        // Insert all records at once for better performance
+        DB::table('student_account')->insert($accounts);
     }
 }

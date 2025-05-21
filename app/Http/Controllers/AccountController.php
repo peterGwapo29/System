@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 
 class AccountController extends Controller
@@ -15,36 +16,42 @@ class AccountController extends Controller
 
 
     public function destroy($id){
-        DB::delete('DELETE FROM student_account WHERE account_id = ?', [$id]);
+        $updated = DB::table('student_account')
+            ->where('account_id', $id)
+            ->update(['account_status' => 'inactive']);
 
-        return redirect()->route('account')->with('success', 'Account deleted successfully.');
+        if ($updated) {
+            return redirect()->route('account')->with('success', 'Account marked as inactive.');
+        } else {
+            return redirect()->route('account')->with('fail', 'Failed to update account status.');
+        }
     }
 
-//     public function create()
-// {
-//     return view('Account.createAccount'); // View form for adding a new account
-// }
 
-public function store(Request $request)
-{
-    $request->validate([
-        'student_id' => 'required|string|max:255',
-        'username' => 'required|string|max:255',
-        'password' => 'required|string|max:255',
-        'email' => 'required|email|max:255',
-        'account_status' => 'required|string|max:255',
-    ]);
+    function insert(Request $request){
+        $request -> validate([
+            'student_id' => 'required',
+            'username' => 'required',
+            'password' => 'required',
+            'email' => 'required|email|unique:student_account',
+        ]);
 
-    DB::insert('INSERT INTO student_account (student_id, username, password, email, account_status, created_at) VALUES (?, ?, ?, ?, ?, NOW())', [
-        $request->student_id,
-        $request->username,
-        bcrypt($request->password),
-        $request->email,
-        $request->account_status,
-    ]);
+        $query = DB::table('student_account') ->insert([
+            'student_id' => $request->input('student_id'),
+            'username' => $request->input('username'),
+            'password' => Hash::make($request->input('password')),
+            'email' => $request->input('email'),
+            'created_at' => now()->format('Y-m-d h:i:s A'),
+            'account_status' => 'active',
+        ]);
 
-    return redirect()->route('account')->with('success', 'Account added successfully.');
-}
+        if($query){
+            return back()->with('success', 'Account created successfully.');
+        }else{
+            return back()->with('fail', 'Something went wrong.');
+        }
 
+
+    }
 
 }
