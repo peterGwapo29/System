@@ -27,3 +27,68 @@ label{
 #addAccountButton:hover{
     background-color: rgb(46, 182, 8);
 }
+
+.closePassModal{
+    background-color: rgb(190, 24, 24);
+    padding: 4px;
+    color: #ffffff;
+    font-weight: normal;
+    width: 100px;
+    border-radius: 12px;
+    margin-bottom: -10px;
+    margin-top: -10px;
+}
+
+.overlayModalTable {
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+}
+.dataPassword:hover{
+    color: rgb(33, 33, 199);
+    transition: all 0.1s ease;
+}
+
+#table-action svg{
+    height: 15px;
+}
+
+.hidden {
+    display: none;
+}
+.modal-content {
+    width: 60%;
+}
+
+.editSaveBTN{
+    color: rgb(249, 249, 249);
+    background-color: #28a745;
+    border-radius: 4px;
+    width: 100px;
+    padding: 4px;
+}
+
+#closeEditModalBtn{
+    color: rgb(249, 249, 249);
+    background-color: #6c757d;
+    border-radius: 4px;
+    width: 100px;
+    padding: 4px;
+}
+
+#editAccountModal {
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+}
+
+#dt-length-0 {
+    padding: 5px 24px;
+}
+
+.dt-length label, .dt-search label {
+    color: #ffffff;
+}

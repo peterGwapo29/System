@@ -5,13 +5,19 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 
 class AccountController extends Controller
 {
-    public function account()
-    {
+    public function account(){
         $accounts = DB::select('SELECT * FROM student_account');
         return view('Account.accountList', ['accounts' => $accounts]);
+    }
+
+    public function studentAcc_dataTables(){
+        $accounts = DB::select('SELECT * FROM student_account');
+
+        return DataTables::of($accounts)->make(true);
     }
 
 
@@ -50,8 +56,44 @@ class AccountController extends Controller
         }else{
             return back()->with('fail', 'Something went wrong.');
         }
-
-
     }
+public function update_account(Request $request)
+{
+    $request->validate([
+        'editAccountId' => 'required|integer',
+        'editStudentId' => 'required',
+        'editUsername' => 'required',
+        'editEmail' => 'required|email',
+        'editStatus' => 'required',
+    ]);
+
+    $params = [
+        'student_id' => $request->input('editStudentId'),
+        'username' => $request->input('editUsername'),
+        'email' => $request->input('editEmail'),
+        'account_status' => $request->input('editStatus'),
+    ];
+
+    // Only update password if a new one was entered
+    if (!empty($request->input('editPassword'))) {
+        $params['password'] = Hash::make($request->input('editPassword'));
+    }
+
+    $updated = DB::table('student_account')
+        ->where('account_id', $request->input('editAccountId'))
+        ->update($params);
+
+    if ($updated) {
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Account updated successfully',
+        ]);
+    } else {
+        return response()->json([
+            'status' => 'error',
+            'message' => 'Account not found or no changes made',
+        ], 404);
+    }
+}
 
 }

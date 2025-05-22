@@ -17,56 +17,8 @@
             </div>
 
                 <div class="p-6 text-gray-900 dark:text-gray-100 overflow-x-auto">
-                    <table class="table-auto w-full border-collapse" id="accountTable">
-                        <thead class="bg-gray-100 dark:bg-gray-700 text-sm text-left">
-                            <tr>
-                                <th class="px-4 py-2">Account ID</th>
-                                <th class="px-4 py-2">Student ID</th>
-                                <th class="px-4 py-2">Username</th>
-                                <th class="px-4 py-2">Password</th>
-                                <th class="px-4 py-2">Email</th>
-                                <th class="px-4 py-2">Created At</th>
-                                <th class="px-4 py-2">Status</th>
-                                <th class="px-4 py-2">Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($accounts as $account)
-                                <tr class="border-t border-gray-200 dark:border-gray-600 text-sm">
-                                    <td class="px-4 py-2">{{ $account->account_id }}</td>
-                                    <td class="px-4 py-2">{{ $account->student_id }}</td>
-                                    <td class="px-4 py-2">{{ $account->username }}</td>
-                                    <td class="px-4 py-2">
-                                        {{ Str::limit($account->password, 15, '...') }}
-                                    </td>
-                                    <td class="px-4 py-2">{{ $account->email }}</td>
-                                    <td class="px-4 py-2">{{ $account->created_at }}</td>
-                                    <td class="px-4 py-2">{{ $account->account_status }}</td>
-                                    <td class="px-4 py-2">
-                                        <form action="{{ route('accounts.destroy', $account->account_id) }}" method="POST" class="inline">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit"
-                                                onclick="return confirm('Are you sure you want to delete this account?')"
-                                                class="bg-red-500 hover:bg-red-600 text-white font-semibold py-1 px-3 rounded shadow-md transition duration-200 ease-in-out"
-                                                id="deleteAccountButton">
-                                                <i class="fa-solid fa-trash"></i>
-                                            </button>
+                    <table class="table-auto w-full border-collapse" id="accountTable"></table>
 
-                                            <button type="button"
-                                                class="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-1 px-3 rounded shadow-md transition duration-200 ease-in-out mr-2"
-                                                id="editAccountButton">
-                                                <i class="fa-solid fa-pen-to-square"></i>
-                                            </button>
-
-                                        </form>
-                                    </td>
-                                    
-
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
                 </div>
             </div>
         </div>
@@ -142,5 +94,66 @@
             </div>
         </div>
 
+
+        <!-- data password modal -->
+        <div id="passwordModal" class="fixed inset-0 flex items-center justify-center z-50 hidden bg-black bg-opacity-50">
+            <div class="overlayModalTable">
+                <div class="bg-white w-[500px] h-[500px] rounded-lg shadow-xl relative flex flex-col justify-center items-center text-center p-6">
+                
+                    <p id="passwordContent" class="mb-6 font-mono text-gray-800 break-all text-lg"></p>
+
+                    <button id="closeModalBtn" class="closePassModal">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        
+        <!-- Edit Account Modal -->
+        <div id="editAccountModal" class="modal hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="modal-content bg-white rounded-lg shadow-lg w-96 p-6 relative">
+            <h2 class="text-xl font-semibold mb-4">Update <span id="account_username"></span></h2>
+            
+            <form id="editAccountForm">
+            <div class="mb-3">
+                <input type="hidden" id="editAccountId" name="account_id" class="w-full border rounded px-3 py-2" readonly />
+            </div>
+
+            <div class="mb-3">
+                <label for="editStudentId" class="block font-medium mb-1">Student ID</label>
+                <input type="text" id="editStudentId" name="student_id" class="w-full border rounded px-3 py-2" required />
+            </div>
+
+            <div class="mb-3">
+                <label for="editUsername" class="block font-medium mb-1">Username</label>
+                <input type="text" id="editUsername" name="username" class="w-full border rounded px-3 py-2" required />
+            </div>
+
+            <div class="mb-3">
+                <label for="editPassword" class="block font-medium mb-1">Password</label>
+                <input type="password" id="editPassword" name="password" class="w-full border rounded px-3 py-2" />
+            </div>
+
+            <div class="mb-3">
+                <label for="editEmail" class="block font-medium mb-1">Email</label>
+                <input type="email" id="editEmail" name="email" class="w-full border rounded px-3 py-2" required />
+            </div>
+
+            <div class="mb-3">
+                <label for="editStatus" class="block font-medium mb-1">Status</label>
+                <select id="editStatus" name="account_status" class="w-full border rounded px-3 py-2" required>
+                <option value="Active">Active</option>
+                <option value="Inactive">Inactive</option>
+                </select>
+            </div>
+
+            <div class="flex justify-end gap-3">
+                <button type="button" id="closeEditModalBtn">Cancel</button>
+                <button type="submit" id="updateAccountSubmit">Save</button>
+            </div>
+            </form>
+        </div>
+        </div>
 
 </x-app-layout>
