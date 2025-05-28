@@ -1,0 +1,75 @@
+#addStudentButton{
+    background-color: rgb(39, 155, 7);
+}
+
+#addStudentButton:hover{
+    opacity: .9;
+}
+
+.backgroundModalStudent {
+    background-color: white;
+    width: 60%;
+    height: auto;
+}
+
+#closeModalStudent{
+    margin-right: 24px;
+}
+
+#closeModalStudent svg:hover{
+    color: red;
+}
+
+#studentModal {
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(2px);
+}
+
+#studentSuccessModal {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+#studentSuccessModalOverlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0,0,0,0.6);
+    backdrop-filter: blur(3px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modalContentSucess {
+    background: white;
+    max-width: 500px;
+    width: 90%;
+    padding: 24px 32px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    text-align: center;
+}
+
+.modalTitleSucess {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: rgb(12, 119, 35);
+  margin-bottom: 12px;
+}
+
+.modalMessageSucess {
+  font-size: 1rem;
+  color: #4b5563;
+}
+#success_icon{
+    height: 50px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    filter: drop-shadow(0 4px 6px rgba(12, 119, 35, 0.5));
+
+}

@@ -1,6 +1,6 @@
 #accountModal {
     background-color: rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(1px);
+    backdrop-filter: blur(2px);
 }
 
 .backgroundModalAccount {
@@ -8,6 +8,7 @@
     width: 50%;
     height: auto;
 }
+
 label{
     color: black;
 }

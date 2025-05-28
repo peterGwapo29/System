@@ -28,14 +28,13 @@ Route::middleware('auth')->group(function () {
     Route::post('/insert', [AccountController::class, 'insert']);
     Route::get('/studentAccount/list', [AccountController::class, 'studentAcc_dataTables'])->name('studentAcc_dataTables');
     Route::post('/account/update', [AccountController::class, 'update_account']);
-
-
     Route::put('/account/{id}', [AccountController::class, 'update'])->name('accounts.update');
     Route::post('/account/delete', [App\Http\Controllers\AccountController::class, 'deleteAccount'])->name('account.delete');
 
-    
+    //STUDENT
     Route::get('/student', [StudentController::class, 'student'])->name('student');
-
+    Route::get('/student/list', [StudentController::class, 'student_dataTables'])->name('student_dataTables');
+    Route::post('/insertStudent', [StudentController::class, 'insertStudent']);
 
     Route::get('/membership', [MembershipController::class, 'membership'])->name('membership');
 

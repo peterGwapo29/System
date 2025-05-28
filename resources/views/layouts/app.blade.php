@@ -15,6 +15,7 @@
         <link href="https://cdn.datatables.net/2.3.0/css/dataTables.dataTables.min.css" rel="stylesheet" />
         <link href="{{asset('css/accountStyle.css')}}" rel="stylesheet" />
         <link href="{{asset('css/edit.css')}}" rel="stylesheet" />
+        <link href="{{asset('css/student.css')}}" rel="stylesheet" />
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -42,6 +43,7 @@
         <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
         <script src="https://cdn.datatables.net/2.3.0/js/dataTables.min.js"></script>
         <script src="{{asset('JS/custom.js')}}"></script>
+        <script src="{{asset('JS/student.js')}}"></script>
 
     </body>
 </html>
