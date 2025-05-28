@@ -19,14 +19,13 @@ class StudentAccountSeeder extends Seeder
             $accounts[] = [
                 'student_id' => $faker->unique()->numberBetween(1, 1000),
                 'username' => $faker->unique()->userName,
-                'password' => bcrypt('password'), // Use bcrypt for password hashing
+                'password' => bcrypt('password'), // Secure password hashing
                 'email' => $faker->unique()->safeEmail,
-                'created_at' => $faker->dateTimeThisYear()->format('Y-m-d H:i:s'), // Format timestamp properly
-                'account_status' => $faker->randomElement(['active']),
+                'created_at' => $faker->dateTimeBetween('2024-01-01', '2025-04-26')->format('Y-m-d H:i:s'),
+                'account_status' => $faker->randomElement(['Active', 'Inactive']),
             ];
         }
 
-        // Insert all records at once for better performance
         DB::table('student_account')->insert($accounts);
     }
 }

@@ -25,7 +25,7 @@ label{
 }
 
 #addAccountButton:hover{
-    background-color: rgb(46, 182, 8);
+    opacity: .9;
 }
 
 .closePassModal{
@@ -48,13 +48,9 @@ label{
     justify-content: center;
     z-index: 50;
 }
-.dataPassword:hover{
-    color: rgb(33, 33, 199);
-    transition: all 0.1s ease;
-}
 
 #table-action svg{
-    height: 15px;
+    height: 18px;
 }
 
 .hidden {
@@ -91,4 +87,154 @@ label{
 
 .dt-length label, .dt-search label {
     color: #ffffff;
+}
+
+#closeEditModalBtn{
+    background-color: #6c757d;
+}
+#closeEditModalBtn:hover{
+    background-color: #62696e;
+}
+
+#updateAccountSubmit{
+    background-color: #0d6efd;
+    color: rgb(249, 249, 249);
+    border-radius: 4px;
+    width: 100px;
+    padding: 4px;
+}
+#updateAccountSubmit:hover{
+    background-color: #053d79;
+}
+#table-action{
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+@keyframes scaleIn {
+  0% {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.animate-scaleIn {
+  animation: scaleIn 0.3s ease-out;
+}
+
+#dlt_icon {
+  height: 50px;
+  display: block;
+  filter: drop-shadow(0 4px 6px rgba(220, 38, 38, 0.5));
+}
+
+#deleteConfirmModal {
+  backdrop-filter: blur(6px);
+  background-color: rgba(0, 0, 0, 0.4);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+#deleteConfirmModal span, p{
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.background_delete{
+    width: 500px;
+    height: auto;
+    border-radius: 14px;
+}
+#cancelDeleteBtn{
+    background-color: #858686;
+    color: rgb(249, 249, 249);
+    border-radius: 4px;
+}
+#cancelDeleteBtn:hover{
+    opacity: .9;
+}
+#confirmDeleteBtn:hover{
+    opacity: .9;
+}
+.dt-length select option{
+    color: black;
+}
+.deleteAccountBtn{
+    color: rgb(175, 20, 20);
+}
+.editAccountModal{
+    color: rgb(13, 110, 253);
+}
+.editAccountModal:hover{
+    opacity: .8;
+}
+.deleteAccountBtn:hover{
+    opacity: .8;
+}
+#insertData{
+    background-color: rgb(39, 155, 7);
+    color: #ffffff;
+}
+#insertData:hover{
+    opacity: .9;
+}
+
+#studentExistsModal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+#studentExistModalOverlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0,0,0,0.6);
+  backdrop-filter: blur(3px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modalContent {
+  background: white;
+  max-width: 500px;
+  width: 90%;
+  padding: 24px 32px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  text-align: center;
+}
+
+.modalTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #dc2626;
+  margin-bottom: 12px;
+}
+
+.modalMessage {
+  font-size: 1rem;
+  color: #4b5563;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.modalContent svg {
+  display: block;
+  margin: 0 auto 12px;
 }

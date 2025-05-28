@@ -30,10 +30,10 @@ Route::middleware('auth')->group(function () {
     Route::post('/account/update', [AccountController::class, 'update_account']);
 
 
-    Route::delete('/account/{id}', [AccountController::class, 'destroy'])->name('accounts.destroy');
     Route::put('/account/{id}', [AccountController::class, 'update'])->name('accounts.update');
+    Route::post('/account/delete', [App\Http\Controllers\AccountController::class, 'deleteAccount'])->name('account.delete');
 
-
+    
     Route::get('/student', [StudentController::class, 'student'])->name('student');
 
 
