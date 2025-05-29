@@ -125,7 +125,7 @@
 
                 <div class="mb-3">
                     <label for="editPassword" class="block font-medium mb-1">Password</label>
-                    <input type="password" id="editPassword" name="password" class="w-full border rounded px-3 py-2" />
+                    <input type="password" id="editPassword" name="password" class="w-full border rounded px-3 py-2" required/>
                 </div>
 
                 <div class="mb-3">
@@ -162,14 +162,14 @@
 
                 <!-- Message Section -->
                 <p class="text-gray-800 mb-1">
-                    You're about to permanently delete this account.
+                    You're about to inactive this account.
                 </p>
                 <span class="second_message block text-sm text-gray-800 mb-5">This action cannot be undone.</span>
 
                 <!-- Action Buttons -->
                 <div class="flex justify-center gap-4">
-                    <button id="confirmDeleteBtn" class="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition">Delete</button>
-                    <button id="cancelDeleteBtn" class="bg-gray-300 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-400 transition">Cancel</button>
+                    <button id="confirmDeleteBtn" class="bg-red-600 text-white px-4 py-2 hover:bg-red-700 transition">Delete</button>
+                    <button id="cancelDeleteBtn" class="bg-gray-300 text-gray-800 px-4 py-2 hover:bg-gray-400 transition">Cancel</button>
                 </div>
             </div>
         </div>
@@ -198,5 +198,29 @@
             setTimeout(closeModal, 3000);
         </script>
         @endif
+
+        @if(session('success_add_student'))
+            <div id="successAddStudent">
+                <div id="successAddStudentOverlay">
+                    <div class="successModalContent animate-scaleIn">
+                        <svg id="success_icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
+                        </svg>
+                        <h2 class="successModalTitle">Success!</h2>
+                        <p class="successModalMessage">Account successfully added.</p>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                setTimeout(() => {
+                    const modal = document.getElementById('successAddStudent');
+                    if (modal) {
+                        modal.style.display = 'none';
+                    }
+                }, 3000);
+            </script>
+        @endif
+
 
 </x-app-layout>

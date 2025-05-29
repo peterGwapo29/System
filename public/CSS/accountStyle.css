@@ -155,6 +155,9 @@ label{
     color: rgb(249, 249, 249);
     border-radius: 4px;
 }
+#confirmDeleteBtn{
+    border-radius: 4px;
+}
 #cancelDeleteBtn:hover{
     opacity: .9;
 }
@@ -238,4 +241,28 @@ input[type=number] {
 .modalContent svg {
   display: block;
   margin: 0 auto 12px;
+}
+
+#successAddStudent {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.successModalContent {
+    background: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    text-align: center;
+    animation: scaleIn 0.3s ease;
+}
+
+/* Add scale animation */
+@keyframes scaleIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
 }

@@ -44,7 +44,6 @@
         <script src="https://cdn.datatables.net/2.3.0/js/dataTables.min.js"></script>
         <script src="{{asset('JS/custom.js')}}"></script>
         <script src="{{asset('JS/student.js')}}"></script>
-        <script src="{{asset('JS/addCourse.js')}}"></script>
 
     </body>
 </html>

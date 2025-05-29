@@ -71,7 +71,6 @@
     margin-left: auto;
     margin-right: auto;
     filter: drop-shadow(0 4px 6px rgba(12, 119, 35, 0.5));
-
 }
 
 #addCourseButton{
@@ -115,4 +114,120 @@
 }
 #updateStudentSubmit:hover{
     opacity: .9;
+}
+#editStudentModal{
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+}
+
+#studentUpdateModalOverlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.4);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 50;
+        backdrop-filter: blur(3px);
+    }
+
+    .modalContentUpdate {
+        background-color: white;
+        padding: 30px;
+        border-radius: 10px;
+        text-align: center;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        animation: scaleIn 0.3s ease-in-out;
+    }
+
+    .modalTitleUpdate {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #2563eb; /* Tailwind blue-600 */
+    }
+
+    .modalMessageUpdate {
+        font-size: 1rem;
+        margin-top: 10px;
+        color: #374151; /* Tailwind gray-700 */
+    }
+
+    @keyframes scaleIn {
+        from {
+            transform: scale(0.9);
+            opacity: 0;
+        }
+
+        to {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+
+#update_success_icon{
+    height: 50px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    color: blue;
+    filter: drop-shadow(0 4px 6px rgba(12, 26, 119, 0.5));
+
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+#studentDLTConfirmModal{
+    backdrop-filter: blur(6px);
+    background-color: rgba(0, 0, 0, 0.4);
+    -webkit-backdrop-filter: blur(6px);
+}
+
+#studentDLTConfirmModal span, p{
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+#studentDLT_icon{
+    height: 50px;
+    display: block;
+    filter: drop-shadow(0 4px 6px rgba(220, 38, 38, 0.5));
+}
+#studentDLTConfirmBtn{
+    border-radius: 4px;
+}
+#studentDLTConfirmBtn:hover{
+    opacity: .9;
+}
+#studentDLTCancelBtn{
+    background-color: #858686;
+    color: rgb(249, 249, 249);
+    border-radius: 4px;
+}
+#studentDLTCancelBtn:hover{
+    opacity: .9;
+}
+.studentDLT-background{
+    width: 500px;
+    height: auto;
+    border-radius: 14px;
+}
+
+.deleteStudentBtn{
+    color: rgb(175, 20, 20);
+}
+.deleteStudentBtn:hover{
+    opacity: .8;
 }

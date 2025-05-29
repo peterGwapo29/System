@@ -51,7 +51,7 @@ class AccountController extends Controller
         ]);
 
         if ($query) {
-            return back()->with('success', 'Account created successfully.');
+            return back()->with('success_add_student', 'Account successfully added.');
         } else {
             return back()->with('fail', 'Something went wrong.');
         }

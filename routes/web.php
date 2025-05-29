@@ -8,6 +8,7 @@ use App\Http\Controllers\MembershipController;
 use App\Http\Controllers\ClubController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\EventRegistrationController;
+use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\CourseController;
 
 Route::get('/', function () {
@@ -35,7 +36,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/student', [StudentController::class, 'student'])->name('student');
     Route::get('/student/list', [StudentController::class, 'student_dataTables'])->name('student_dataTables');
     Route::post('/insertStudent', [StudentController::class, 'insertStudent']);
-    Route::post('/student/update', [StudentController::class, 'update_student']);
+    Route::post('/student/update/{id}', [StudentController::class, 'update']);
+    // Route::post('/student/delete', [App\Http\Controllers\StudentController::class, 'deleteStudent'])->name('student.delete');
     
 
     Route::get('/membership', [MembershipController::class, 'membership'])->name('membership');
@@ -48,6 +50,9 @@ Route::middleware('auth')->group(function () {
 
 
     Route::get('/event_reg', [EventRegistrationController::class, 'event_reg'])->name('event_reg');
+
+    //history
+    Route::get('/history', [HistoryController::class, 'history_function'])->name('history');
     
 });
 

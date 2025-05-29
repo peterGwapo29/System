@@ -68,6 +68,7 @@
                         <label for="course" class="block text-sm font-medium text-gray-700 dark:text-gray-700">Course</label>
 
                         <select id="course" name="course" class="w-full border rounded px-3 py-2 dark:bg-gray-800 text-gray-900 dark:text-gray-100 cursor-pointer" required>
+                        <option hidden selected></option>
                         <option value="BSIT">BSIT</option>
                         <option value="BSA">BSA</option>
                         <option value="BSBA">BSBA</option>
@@ -83,6 +84,7 @@
                         <label for="year_level" class="block text-sm font-medium text-gray-700 dark:text-gray-700">Year Level</label>
 
                         <select id="editYearLevel" name="year_level" class="cursor-pointer w-full border rounded px-3 py-2 dark:bg-gray-800 text-gray-900 dark:text-gray-100" required>
+                        <option hidden selected></option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -156,13 +158,13 @@
         <!-- Edit Student Modal -->
         <div id="editStudentModal" class="modal hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
             <div class="modal-content bg-white rounded-lg shadow-lg w-96 p-6 relative animate-scaleIn">
-                <h2 class="text-xl font-semibold mb-4">Update Student Info</h2>
+                <h2 class="text-xl font-semibold mb-4">Update <span id="student_fullname"></span></h2>
 
                 <form id="editStudentForm">
                     @csrf
 
                     <!-- Student Record ID -->
-                    <input type="hidden" id="editStudentRecordId" name="student_id" class="w-full border rounded px-3 py-2" readonly />
+                    <input type="hidden" id="editStudentID" name="student_id" class="w-full border rounded px-3 py-2" readonly />
 
                     <!-- First Name -->
                     <div class="mb-3">
@@ -213,6 +215,47 @@
             </div>
         </div>
 
+        <!-- Modal for Successful Update -->
+        <div id="studentUpdateModal" class="hidden">
+            <div id="studentUpdateModalOverlay">
+                <div class="modalContentUpdate animate-scaleIn">
+                    <svg id="update_success_icon" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M4.5 12.75l6 6 9-13.5" />
+                    </svg>
+                    <h2 class="modalTitleUpdate">Student Updated Successfully</h2>
+                    <p class="modalMessageUpdate">The student record has been updated.</p>
+                </div>
+            </div>
+        </div>
 
+
+        <div id="studentDLTConfirmModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 hidden">
+            <div class="bg-white rounded-xl shadow-lg p-6 w-[90%] max-w-[700px] text-center animate-scaleIn studentDLT-background">
+                
+                <div class="flex flex-col items-center mb-4">
+                    <svg id="studentDLT_icon" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                        class="h-[60px] w-[60px] text-red-600 mb-2">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M12 9v3.75m0-10.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.75c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.57-.598-3.75h-.152c-3.196 0-6.1-1.25-8.25-3.286Zm0 13.036h.008v.008H12v-.008Z" />
+                    </svg>
+                    <h2 class="text-2xl font-bold text-red-600">Student Deletion Required</h2>
+                </div>
+
+                <p class="text-gray-800 mb-1">
+                    You're about to inactive this account.
+                </p>
+                <span class="studentDLT-message block text-sm text-gray-800 mb-5">This action cannot be undone.</span>
+
+                <div class="flex justify-center gap-4">
+                    <button id="studentDLTConfirmBtn"
+                        class="bg-red-600 text-white px-4 py-2 hover:bg-red-700 transition">Delete</button>
+                    <button id="studentDLTCancelBtn"
+                        class="bg-gray-300 text-gray-800 px-4 py-2 hover:bg-gray-400 transition">Cancel</button>
+                </div>
+            </div>
+        </div>
 
 </x-app-layout>

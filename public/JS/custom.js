@@ -108,10 +108,6 @@ document.getElementById('closeEditModalBtn').addEventListener('click', function(
 
 document.getElementById('editAccountForm').addEventListener('submit', function(e) {
     e.preventDefault();
-
-    const formData = new FormData(this);
-    const data = Object.fromEntries(formData.entries());
-
     document.getElementById('editAccountModal').classList.add('hidden');
 
     $('#accountTable').DataTable().ajax.reload();

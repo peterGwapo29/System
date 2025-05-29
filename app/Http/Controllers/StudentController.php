@@ -29,7 +29,6 @@ class StudentController extends Controller
             'year_level' => 'required',
         ]);
 
-        // Check if a student with the same full name exists
         $exists = DB::table('students')
             ->where('first_name', $request->input('first_name'))
             ->where('middle_name', $request->input('middle_name'))
@@ -57,41 +56,57 @@ class StudentController extends Controller
         }
     }
 
-    public function update_student(Request $request){
-        $request->validate([
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'middle_name' => 'required',
-            'course' => 'required',
-            'year_level' => 'required',
+    public function update(Request $request, $id)
+{
+    try {
+        // Check if another student already has the same name
+        $exists = DB::table('students')
+            ->where('first_name', $request->input('first_name'))
+            ->where('last_name', $request->input('last_name'))
+            ->where('middle_name', $request->input('middle_name'))
+            ->where('student_id', '!=', $id) // Exclude current student
+            ->exists();
+
+        if ($exists) {
+            return response()->json([
+                'success' => false,
+                'message' => 'A student with the same name already exists.'
+            ]);
+        }
+
+        // Proceed with update
+        DB::table('students')
+            ->where('student_id', $id)
+            ->update([
+                'first_name' => $request->input('first_name'),
+                'last_name' => $request->input('last_name'),
+                'middle_name' => $request->input('middle_name'),
+                'course' => $request->input('course'),
+                'year_level' => $request->input('year_level'),
+            ]);
+
+        return response()->json(['success' => true]);
+
+    } catch (\Exception $e) {
+        return response()->json([
+            'success' => false,
+            'error' => $e->getMessage()
         ]);
+    }
+}
 
-        $studentId = $request->input('student_id');
-
-        $params = [
-            'first_name' => $request->input('first_name'),
-            'last_name' => $request->input('last_name'),
-            'middle_name' => $request->input('middle_name'),
-            'course' => $request->input('course'),
-            'year_level' => $request->input('year_level'),
-            'status' => 'Active',
-        ];
-
+public function deleteStudent(Request $request){
+        $id = $request->input('student_id');
         $updated = DB::table('students')
-            ->where('student_id', $request->input('editStudentRecordId'))
-            ->update($params);
+            ->where('student_id', $id)
+            ->update(['status' => 'Inactive']);
 
         if ($updated) {
-            return response()->json([
-                'status' => 'success',
-                'message' => 'Account updated successfully',
-            ]);
+            return response()->json(['status' => 'success', 'message' => 'Account deleted successfully.']);
         } else {
-            return response()->json([
-                'status' => 'error',
-                'message' => 'Account not found or no changes made',
-            ], 404);
+            return response()->json(['status' => 'error', 'message' => 'Failed to delete account.'], 400);
         }
     }
+
 
 }
