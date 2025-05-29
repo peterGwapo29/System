@@ -9,13 +9,14 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
 
-            <div class="p-4" style="margin-bottom: -24px;">
+            <div class="p-4 flex justify-between items-center mb-[-24px]">
                 <button
-                class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded shadow-md transition duration-200 ease-in-out" id="addStudentButton">
+                    class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded shadow-md transition duration-200 ease-in-out"
+                    id="addStudentButton">
                     + Add Student
                 </button>
-            </div>
 
+            </div>
                 <div class="p-6 text-gray-900 dark:text-gray-100 overflow-x-auto">
                     <table class="table-auto w-full border-collapse" id="studentTable"></table>
 
@@ -63,9 +64,16 @@
                         </span>
                     </div>
 
-                    <div class="mb-4">
+                    <div class="mb-3">
                         <label for="course" class="block text-sm font-medium text-gray-700 dark:text-gray-700">Course</label>
-                        <input type="text" name="course" id="course" class="mt-1 block w-full border border-gray-300 dark:border-gray-600 rounded-md shadow-sm px-3 py-3 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100" value="{{old('course')}}" required>
+
+                        <select id="course" name="course" class="w-full border rounded px-3 py-2 dark:bg-gray-800 text-gray-900 dark:text-gray-100 cursor-pointer" required>
+                        <option value="BSIT">BSIT</option>
+                        <option value="BSA">BSA</option>
+                        <option value="BSBA">BSBA</option>
+                        <option value="BTLED">BTLED</option>
+                        </select>
+
                         <span style="color: red">
                             @error('course') {{ $message }} @enderror
                         </span>
@@ -74,7 +82,7 @@
                     <div class="mb-3">
                         <label for="year_level" class="block text-sm font-medium text-gray-700 dark:text-gray-700">Year Level</label>
 
-                        <select id="editYearLevel" name="year_level" class="w-full border rounded px-3 py-2 dark:bg-gray-800 text-gray-900 dark:text-gray-100" required>
+                        <select id="editYearLevel" name="year_level" class="cursor-pointer w-full border rounded px-3 py-2 dark:bg-gray-800 text-gray-900 dark:text-gray-100" required>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -144,6 +152,66 @@
             setTimeout(closeSuccessModal, 3000);
         </script>
         @endif
+
+        <!-- Edit Student Modal -->
+        <div id="editStudentModal" class="modal hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+            <div class="modal-content bg-white rounded-lg shadow-lg w-96 p-6 relative animate-scaleIn">
+                <h2 class="text-xl font-semibold mb-4">Update Student Info</h2>
+
+                <form id="editStudentForm">
+                    @csrf
+
+                    <!-- Student Record ID -->
+                    <input type="hidden" id="editStudentRecordId" name="student_id" class="w-full border rounded px-3 py-2" readonly />
+
+                    <!-- First Name -->
+                    <div class="mb-3">
+                        <label for="editFirstName" class="block font-medium mb-1">First Name</label>
+                        <input type="text" id="editFirstName" name="first_name" class="w-full border rounded px-3 py-2" required />
+                    </div>
+
+                    <!-- Last Name -->
+                    <div class="mb-3">
+                        <label for="editLastName" class="block font-medium mb-1">Last Name</label>
+                        <input type="text" id="editLastName" name="last_name" class="w-full border rounded px-3 py-2" required />
+                    </div>
+
+                    <!-- Middle Name -->
+                    <div class="mb-3">
+                        <label for="editMiddleName" class="block font-medium mb-1">Middle Name</label>
+                        <input type="text" id="editMiddleName" name="middle_name" class="w-full border rounded px-3 py-2" required />
+                    </div>
+
+                    <!-- Course -->
+                    <div class="mb-3">
+                        <label for="editCourse" class="block font-medium mb-1">Course</label>
+                        <select id="editCourse" name="course" class="w-full border rounded px-3 py-2 cursor-pointer" required>
+                            <option value="BSIT">BSIT</option>
+                            <option value="BSA">BSA</option>
+                            <option value="BSBA">BSBA</option>
+                            <option value="BTLED">BTLED</option>
+                        </select>
+                    </div>
+
+                    <!-- Year Level -->
+                    <div class="mb-3">
+                        <label for="editYearLevel" class="block font-medium mb-1">Year Level</label>
+                        <select id="editYearLevel" name="year_level" class="w-full border rounded px-3 py-2 cursor-pointer" required>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="flex justify-end gap-3">
+                        <button type="button" id="closeEditStudentModalBtn" class="bg-gray-400 hover:bg-gray-500 text-white font-semibold py-2 px-4 rounded">Cancel</button>
+                        <button type="submit" id="updateStudentSubmit" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
 
 
 

@@ -51,11 +51,11 @@ new DataTable('#studentTable', {
                     <a href="javascript:void(0)" 
                     class="table-action editStudentModal" 
                     title="Edit Account" 
-                    data-account_id="${row.account_id}"
-                    data-student_id="${row.student_id}"
-                    data-username="${row.username}"
-                    data-email="${row.email}"
-                    data-account_status="${row.account_status}"
+                    data-first_name="${row.first_name}"
+                    data-last_name="${row.last_name}"
+                    data-middle_name="${row.middle_name}"
+                    data-course="${row.course}"
+                    data-year_level="${row.year_level}"
                     >
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
@@ -77,20 +77,22 @@ new DataTable('#studentTable', {
     ]
 });
 
-document.querySelector('#studentTable').addEventListener('click', function(e) {
-    if (e.target.closest('.studentModal')) {
-        const el = e.target.closest('.studentModal');
+document.getElementById('closeEditStudentModalBtn').addEventListener('click', function() {
+    document.getElementById('editStudentModal').classList.add('hidden');
+});
 
-        document.getElementById('student_id').value = el.dataset.account_id || '';
-        document.getElementById('first_name').value = el.dataset.student_id || '';
-        document.getElementById('last_name').value = el.dataset.username || '';
-        document.getElementById('middle_name').value = '';
-        document.getElementById('editEmail').value = el.dataset.email || '';
-        document.getElementById('editStatus').value = el.dataset.account_status || 'Active';
+document.querySelector('#studentTable').addEventListener('click', function (e) {
+    if (e.target.closest('.editStudentModal')) {
+        const el = e.target.closest('.editStudentModal');
 
-        document.getElementById('studentModal').classList.remove('hidden');
-        document.getElementById('account_username').textContent = el.dataset.username || '';
-        
+        document.getElementById('editStudentRecordId').value = el.dataset.student_id || '';
+        document.getElementById('editFirstName').value = el.dataset.first_name || '';
+        document.getElementById('editLastName').value = el.dataset.last_name || '';
+        document.getElementById('editMiddleName').value = el.dataset.middle_name || '';
+        document.getElementById('editCourse').value = el.dataset.course || '';
+        document.getElementById('editYearLevel').value = el.dataset.year_level || '';
+
+        document.getElementById('editStudentModal').classList.remove('hidden');
     }
 });
 
@@ -111,6 +113,44 @@ document.addEventListener('DOMContentLoaded', function () {
     window.addEventListener('click', function (event) {
         if (event.target === studentModal) {
             studentModal.classList.add('hidden');
+        }
+    });
+});
+
+document.getElementById('editStudentForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const formData = new FormData(this);
+    const data = Object.fromEntries(formData.entries());
+
+    document.getElementById('editStudentModal').classList.add('hidden');
+
+    $('#studentTable').DataTable().ajax.reload();
+});
+
+$("#editStudentForm").submit(function (e) {
+    e.preventDefault();
+    $.ajax({
+        type: 'post',
+        headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+        url: baseURL() + 'student/update',
+        data: {
+            editStudentRecordId: $('#editStudentRecordId').val(),
+            editFirstName: $('#editFirstName').val(),
+            editLastName: $('#editLastName').val(),
+            editMiddleName: $('#editMiddleName').val(),
+            editCourse: $('#editCourse').val(),
+            editYearLevel: $('#editYearLevel').val(),
+        },
+        success: function (response) {
+            if (response.status === 'success') {
+                alert(response.message);
+                $('#studentTable').DataTable().ajax.reload();
+                document.getElementById('editStudentModal').classList.add('hidden');
+            }
+        },
+        error: function (err) {
+            console.log(err);
         }
     });
 });

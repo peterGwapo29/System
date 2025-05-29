@@ -73,3 +73,46 @@
     filter: drop-shadow(0 4px 6px rgba(12, 119, 35, 0.5));
 
 }
+
+#addCourseButton{
+    background-color: rgb(94, 94, 94);
+}
+
+#addCourseButton:hover{
+    opacity: .9;
+}
+
+.deleteStudentModal{
+    color: rgb(175, 20, 20);
+}
+.deleteStudentModal:hover{
+    opacity: .8;
+}
+
+.editStudentModal{
+    color: rgb(13, 110, 253);
+}
+.editStudentModal:hover{
+    opacity: .8;
+}
+
+#closeEditStudentModalBtn{
+    color: rgb(249, 249, 249);
+    background-color: #6c757d;
+    border-radius: 4px;
+    width: 100px;
+    padding: 4px;
+}
+#closeEditStudentModalBtn:hover{
+    opacity: .9;
+}
+#updateStudentSubmit{
+    background-color: #0d6efd;
+    color: rgb(249, 249, 249);
+    border-radius: 4px;
+    width: 100px;
+    padding: 4px;
+}
+#updateStudentSubmit:hover{
+    opacity: .9;
+}

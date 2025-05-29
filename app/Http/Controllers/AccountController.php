@@ -58,7 +58,6 @@ class AccountController extends Controller
     }
 
 
-
     public function update_account(Request $request){
         $request->validate([
             'editAccountId' => 'required|integer',

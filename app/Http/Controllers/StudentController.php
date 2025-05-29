@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\DataTables;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Hash;
 
 class StudentController extends Controller
 {
@@ -46,6 +47,7 @@ class StudentController extends Controller
             'middle_name' => $request->input('middle_name'),
             'course' => $request->input('course'),
             'year_level' => $request->input('year_level'),
+            'status' => 'Active',
         ]);
 
         if ($query) {
@@ -55,5 +57,41 @@ class StudentController extends Controller
         }
     }
 
+    public function update_student(Request $request){
+        $request->validate([
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'middle_name' => 'required',
+            'course' => 'required',
+            'year_level' => 'required',
+        ]);
+
+        $studentId = $request->input('student_id');
+
+        $params = [
+            'first_name' => $request->input('first_name'),
+            'last_name' => $request->input('last_name'),
+            'middle_name' => $request->input('middle_name'),
+            'course' => $request->input('course'),
+            'year_level' => $request->input('year_level'),
+            'status' => 'Active',
+        ];
+
+        $updated = DB::table('students')
+            ->where('student_id', $request->input('editStudentRecordId'))
+            ->update($params);
+
+        if ($updated) {
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Account updated successfully',
+            ]);
+        } else {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Account not found or no changes made',
+            ], 404);
+        }
+    }
 
 }

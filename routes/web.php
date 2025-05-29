@@ -8,6 +8,7 @@ use App\Http\Controllers\MembershipController;
 use App\Http\Controllers\ClubController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\EventRegistrationController;
+use App\Http\Controllers\CourseController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -28,13 +29,14 @@ Route::middleware('auth')->group(function () {
     Route::post('/insert', [AccountController::class, 'insert']);
     Route::get('/studentAccount/list', [AccountController::class, 'studentAcc_dataTables'])->name('studentAcc_dataTables');
     Route::post('/account/update', [AccountController::class, 'update_account']);
-    Route::put('/account/{id}', [AccountController::class, 'update'])->name('accounts.update');
     Route::post('/account/delete', [App\Http\Controllers\AccountController::class, 'deleteAccount'])->name('account.delete');
 
     //STUDENT
     Route::get('/student', [StudentController::class, 'student'])->name('student');
     Route::get('/student/list', [StudentController::class, 'student_dataTables'])->name('student_dataTables');
     Route::post('/insertStudent', [StudentController::class, 'insertStudent']);
+    Route::post('/student/update', [StudentController::class, 'update_student']);
+    
 
     Route::get('/membership', [MembershipController::class, 'membership'])->name('membership');
 
@@ -46,7 +48,7 @@ Route::middleware('auth')->group(function () {
 
 
     Route::get('/event_reg', [EventRegistrationController::class, 'event_reg'])->name('event_reg');
-
+    
 });
 
 require __DIR__.'/auth.php';

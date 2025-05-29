@@ -94,7 +94,7 @@ label{
     background-color: #6c757d;
 }
 #closeEditModalBtn:hover{
-    background-color: #62696e;
+    opacity: .9;
 }
 
 #updateAccountSubmit{
@@ -105,7 +105,7 @@ label{
     padding: 4px;
 }
 #updateAccountSubmit:hover{
-    background-color: #053d79;
+    opacity: .9;
 }
 #table-action{
     display: flex;
