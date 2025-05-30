@@ -43,7 +43,7 @@ document.getElementById('confirmRestoreBtn').addEventListener('click', function(
         error: function () {
             alert('Failed to restore account.');
             confirmBtn.disabled = false;
-            confirmBtn.textContent = 'Yes, Restore';
+            confirmBtn.textContent = 'Restore';
         }
     });
 });

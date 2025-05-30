@@ -95,7 +95,7 @@ class StudentController extends Controller
     }
 }
 
-public function deleteStudent(Request $request){
+    public function deleteStudent(Request $request){
         $id = $request->input('student_id');
         $updated = DB::table('students')
             ->where('student_id', $id)
@@ -105,6 +105,26 @@ public function deleteStudent(Request $request){
             return response()->json(['status' => 'success', 'message' => 'Account deleted successfully.']);
         } else {
             return response()->json(['status' => 'error', 'message' => 'Failed to delete account.'], 400);
+        }
+    }
+
+    public function restoreStudent(Request $request){
+        $id = $request->input('student_id');
+
+        $updated = DB::table('students')
+            ->where('student_id', $id)
+            ->update(['status' => 'Active']);
+
+        if ($updated) {
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Student successfully restored.'
+            ]);
+        } else {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Failed to restore the student. Please try again.'
+            ], 400);
         }
     }
 }

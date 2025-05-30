@@ -9,12 +9,18 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
 
-            <div class="p-4 flex justify-between items-center mb-[-24px]">
+            <div class="p-4" style="margin-bottom: -24px;">
                 <button
                     class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded shadow-md transition duration-200 ease-in-out"
                     id="addStudentButton">
                     + Add Student
                 </button>
+
+                <select name="filterStatusStudent" id="filterStatusStudent" class="cursor-pointer inline-block text-white font-semibold py-2 px-4 rounded shadow-md transition duration-200 ease-in-out">
+                    <option value="all" selected>All</option>
+                    <option value="active">Active</option>
+                    <option value="inactive">Inactive</option>
+                </select>
 
             </div>
                 <div class="p-6 text-gray-900 dark:text-gray-100 overflow-x-auto">
@@ -270,6 +276,50 @@
                 <h2 class="modalTitleDelete">Student Deleted Successfully</h2>
                 <p class="modalMessageDelete">The student record has been updated.</p>
             </div>
+        </div>
+    </div>
+
+    <!-- Restore Confirmation Modal Student-->
+    <div id="restoreStudentModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 hidden">
+        <div class="bg-white rounded-xl shadow-lg p-6 w-[90%] max-w-[700px] text-center animate-scaleIn background_restore_student">
+            <div class="flex flex-col items-center mb-4">
+                
+                <svg id="restoreStudentIcon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-[60px] w-[60px] text-green-600 mb-2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
+                </svg>
+                <h2 class="text-2xl font-bold text-green-600">Restore Student</h2>
+            </div>
+
+            <p class="text-gray-800 mb-1">
+                You're about to restore this student.
+            </p>
+            <span class="student_second_message block text-sm text-gray-800 mb-5">This action will reactivate the student.</span>
+
+            <div class="flex justify-center gap-4 mt-4">
+                <button id="confirmRestoreStudentBtn" class="bg-green-600 text-white px-4 py-2 hover:bg-green-700 transition">Restore</button>
+                <button id="cancelRestoreStudentBtn" class="bg-gray-300 text-gray-800 px-4 py-2 hover:bg-gray-400 transition">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="storeSuccessModalStudent" class="hidden fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center">
+        <div class="content_success_store_student">
+
+            <div class="sparkle sparkle0001"></div>
+            <div class="sparkle sparkle0002"></div>
+            <div class="sparkle sparkle0003"></div>
+            <div class="sparkle sparkle0004"></div>
+            <div class="sparkle sparkle0005"></div>
+            <div class="sparkle sparkle0006"></div>
+            <div class="sparkle sparkle0007"></div>
+            <div class="sparkle sparkle0008"></div>
+
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+            </svg>
+
+            <h2 class="text-lg font-semibold">Success</h2>
+            <p>Account successfully updated!</p>
         </div>
     </div>
 

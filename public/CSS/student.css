@@ -253,3 +253,70 @@
     border-radius: 10px;
     width: 400px;
 }
+#filterStatusStudent{
+    color: white;
+    width: 108px;
+    margin-left: 12px;
+    background-color: #1f2937;
+}
+.status-badge-student {
+    display: inline-flex;
+    align-items: center;
+    font-weight: 600;
+    font-size: 0.9rem;
+    gap: 6px;
+}
+
+.status-circle-student {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.active-status-student .status-circle-student {
+    background-color: #22c55e;
+}
+
+.inactive-status-student .status-circle-student {
+    background-color: #6b7280;
+    opacity: 0.7;
+}
+/* restore style */
+#restoreIconStudent{
+    cursor: pointer;
+    height: 18px;
+    display: block;
+    color: #28a745;
+}
+#restoreIconStudent:hover{
+    opacity: .8;
+}
+#restoreStudentModal{
+    backdrop-filter: blur(6px);
+    background-color: rgba(0, 0, 0, 0.6);
+    -webkit-backdrop-filter: blur(6px);
+}
+
+#confirmRestoreStudentBtn{
+    background-color: rgb(39, 155, 7);
+    color: rgb(249, 249, 249);
+    border-radius: 4px;
+    width: 100px;
+    padding: 4px;
+}
+#confirmRestoreStudentBtn:hover{
+    opacity: .9;
+}
+
+#restoreStudentIcon{
+    height: 50px;
+    display: block;
+    color: rgb(39, 155, 7);
+    filter: drop-shadow(0 4px 6px rgb(39, 155, 7));
+}
+.background_restore_student{
+    border-radius: 8px;
+    width: 500px;
+    text-align: center;
+}

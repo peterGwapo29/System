@@ -32,6 +32,9 @@ document.getElementById('confirmDeleteBtn').addEventListener('click', function()
             document.getElementById('deleteConfirmModal').classList.add('hidden');
             accountIdToDelete = null;
 
+            confirmBtn.disabled = false;
+            confirmBtn.textContent = 'Delete';
+
             const modal = document.getElementById('deleteSuccessModal');
             modal.classList.remove('hidden');
             setTimeout(() => {
@@ -40,6 +43,9 @@ document.getElementById('confirmDeleteBtn').addEventListener('click', function()
         },
         error: function () {
             alert('Failed to delete account.');
+
+            confirmBtn.disabled = false;
+            confirmBtn.textContent = 'Delete';
         }
     });
 });
