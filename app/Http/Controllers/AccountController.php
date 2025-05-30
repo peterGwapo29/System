@@ -23,40 +23,65 @@ class AccountController extends Controller
         return DataTables::of($accounts)->make(true);
     }
 
-    public function insert(Request $request){
-        $request->validate([
-            'student_id' => 'required',
-            'username' => 'required',
-            'password' => 'required',
-            'email' => 'required|email',
-        ]);
+   public function store(Request $request)
+{
+    try {
+        $student_id = $request->input('student_id');
+        $username = $request->input('username');
+        $password = $request->input('password');
+        $email = $request->input('email');
 
-        // Check if student_id already exists
-        $exists = DB::table('student_account')
-                    ->where('student_id', $request->input('student_id'))
-                    ->exists();
-
-        if ($exists) {
-            return redirect()->back()->with('student_exists', true);
+        $studentExists = DB::select("SELECT * FROM students WHERE student_id = ?", [$student_id]);
+        if (empty($studentExists)) {
+            return response()->json([
+                'success' => false, 
+                'message' => 'Student ID not found.'
+            ]);
         }
 
+        $accountExists = DB::select("SELECT * FROM student_account WHERE student_id = ?", [$student_id]);
+        if (!empty($accountExists)) {
+            return response()->json([
+                'success' => false, 
+                'message' => 'Student already has an account.'
+            ]);
+        }
 
-        $query = DB::table('student_account')->insert([
-            'student_id' => $request->input('student_id'),
-            'username' => $request->input('username'),
-            'password' => Hash::make($request->input('password')),
-            'email' => $request->input('email'),
-            'created_at' => now()->format('Y-m-d h:i:s A'),
-            'account_status' => 'Active',
+        $usernameExist = DB::select("SELECT * FROM student_account WHERE username = ?", [$username]);
+        if (!empty($usernameExist)) {
+            return response()->json([
+                'success' => false, 
+                'message' => 'This username is already taken, Please try again.'
+            ]);
+        }
+
+        $emailExist = DB::select("SELECT * FROM student_account WHERE email = ?", [$email]);
+        if (!empty($emailExist)) {
+            return response()->json([
+                'success' => false, 
+                'message' => 'This email is already taken, Please try again.'
+            ]);
+        }
+        
+
+        DB::insert("INSERT INTO student_account (student_id, username, password, email, created_at, account_status) VALUES (?, ?, ?, ?, ?, ?)", [
+            $student_id,
+            $username,
+            Hash::make($password),
+            $email,
+            now(),
+            'Active'
         ]);
 
-        if ($query) {
-            return back()->with('success_add_student', 'Account successfully added.');
-        } else {
-            return back()->with('fail', 'Something went wrong.');
-        }
+        return response()->json(['success' => true]);
+
+    } catch (\Exception $e) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Server error: ' . $e->getMessage()
+        ], 500);
     }
-
+}
 
     public function update_account(Request $request){
         $request->validate([

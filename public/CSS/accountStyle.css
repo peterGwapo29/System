@@ -1,6 +1,6 @@
 #accountModal {
     background-color: rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(2px);
+    backdrop-filter: blur(4px);
 }
 
 .backgroundModalAccount {
@@ -29,15 +29,29 @@ label{
     opacity: .9;
 }
 
-.closePassModal{
+.closePassModal {
     background-color: rgb(190, 24, 24);
-    padding: 4px;
+    padding: 0.5rem;
     color: #ffffff;
-    font-weight: normal;
-    width: 100px;
-    border-radius: 12px;
-    margin-bottom: -10px;
-    margin-top: -10px;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease;
+    margin-top: -20px;
+}
+.closePassModal:hover {
+    opacity: .9;
+}
+#passwordContent{
+    border-radius: 0;
+}
+.PI{
+    padding-top: 18px;
+}
+#passwordModal {
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
 }
 
 .overlayModalTable {
@@ -136,7 +150,7 @@ label{
 
 #deleteConfirmModal {
   backdrop-filter: blur(6px);
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.6);
   -webkit-backdrop-filter: blur(6px);
 }
 
@@ -260,9 +274,194 @@ input[type=number] {
     text-align: center;
     animation: scaleIn 0.3s ease;
 }
+#addAccountModal{
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+}
 
-/* Add scale animation */
 @keyframes scaleIn {
     from { transform: scale(0.8); opacity: 0; }
     to { transform: scale(1); opacity: 1; }
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+.animate-fadeIn {
+    animation: fadeIn 0.3s ease-out;
+}
+
+#successModal {
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    text-align: center;
+}
+#passwordModal{
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+}
+
+.content_success_insert {
+    width: 500px;
+    background-color: white;
+    border-radius: 12px;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    animation: fadeIn 0.3s ease-out;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Sparkle particles */
+.sparkle {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: gold;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: sparkle 1.5s infinite ease-in-out;
+    z-index: 1;
+}
+
+.sparkle1 { top: 20px; left: 40px; animation-delay: 0s; }
+.sparkle2 { top: 30px; right: 50px; animation-delay: 0.3s; }
+.sparkle3 { bottom: 40px; left: 60px; animation-delay: 0.6s; }
+.sparkle4 { bottom: 30px; right: 30px; animation-delay: 0.9s; }
+.sparkle5 { top: 10px; right: 80px; animation-delay: 1.2s; }
+.sparkle6 { bottom: 20px; left: 100px; animation-delay: 1.4s; }
+.sparkle7 { bottom: 15px; left: 30px; animation-delay: 1.4s; }
+.sparkle8 { bottom: 25px; left: 20px; animation-delay: 1.4s; }
+
+/* Checkmark Icon */
+#successModal svg {
+    width: 70px;
+    height: 70px;
+    display: block;
+    filter: drop-shadow(0 4px 6px rgba(12, 119, 35, 0.5));
+    color: rgb(12, 119, 35);
+    z-index: 2;
+}
+
+/* Button Styles */
+.addbtnCANCEL {
+    background-color: #6c757d;
+    color: #ffffff;
+    padding: 4px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.addbtnADD {
+    background-color: rgb(39, 155, 7);
+    color: #ffffff;
+    padding: 4px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.addbtnADD:hover,
+.addbtnCANCEL:hover {
+    opacity: 0.9;
+}
+
+/* Keyframes */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes sparkle {
+    0%, 100% {
+        transform: scale(1) translateY(0);
+        opacity: 0.8;
+    }
+    50% {
+        transform: scale(1.5) translateY(-10px);
+        opacity: 0.3;
+    }
+}
+
+#editSuccessModal {
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    text-align: center;
+}
+
+.content_success_edit {
+    width: 500px;
+    background-color: white;
+    border-radius: 12px;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    animation: fadeInEdit 0.3s ease-out;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Sparkle particles for edit modal */
+.sparkle01, .sparkle02, .sparkle03, .sparkle04,
+.sparkle05, .sparkle06, .sparkle07, .sparkle08 {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: gold;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: sparkleEdit 1.5s infinite ease-in-out;
+    z-index: 1;
+}
+
+.sparkle01 { top: 20px; left: 40px; animation-delay: 0s; }
+.sparkle02 { top: 30px; right: 50px; animation-delay: 0.3s; }
+.sparkle03 { bottom: 40px; left: 60px; animation-delay: 0.6s; }
+.sparkle04 { bottom: 30px; right: 30px; animation-delay: 0.9s; }
+.sparkle05 { top: 10px; right: 80px; animation-delay: 1.2s; }
+.sparkle06 { bottom: 20px; left: 100px; animation-delay: 1.4s; }
+.sparkle07 { bottom: 15px; left: 30px; animation-delay: 1.4s; }
+.sparkle08 { bottom: 25px; left: 20px; animation-delay: 1.4s; }
+
+/* Checkmark icon style */
+#editSuccessModal svg {
+    width: 70px;
+    height: 70px;
+    display: block;
+    filter: drop-shadow(0 4px 6px rgba(12, 119, 35, 0.5));
+    color: rgb(12, 119, 35);
+    z-index: 2;
+}
+
+/* Animation keyframes */
+@keyframes fadeInEdit {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes sparkleEdit {
+    0%, 100% {
+        transform: scale(1) translateY(0);
+        opacity: 0.8;
+    }
+    50% {
+        transform: scale(1.5) translateY(-10px);
+        opacity: 0.3;
+    }
 }

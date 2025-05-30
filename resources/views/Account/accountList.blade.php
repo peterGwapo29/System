@@ -24,80 +24,63 @@
         </div>
     </div>
 
-        <!-- Modal for Adding Account -->
-        <div id="accountModal" class="fixed inset-0 bg-black bg-opacity-40 backdrop-blur-sm flex justify-center items-center z-50 hidden">
-            <div class="relative rounded-lg shadow-xl p-6 backgroundModalAccount">
+        <!-- Add Account Modal -->
+        <div id="addAccountModal" class="modal hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+            <div class="modal-content bg-white rounded-lg shadow-lg w-96 p-6 relative animate-scaleIn">
+                <h2 class="text-xl font-semibold mb-4">Add Account</h2>
 
-                <button id="closeModalAccount" class="absolute top-0 right-0 m-4 text-gray-400 hover:text-gray-600 dark:hover:text-white">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-                    </svg>
-                </button>
+                <!-- Error Message -->
+                <div id="addAccountError" class="hidden text-red-600 text-sm mb-3"></div>
 
-                <h2 class="text-xl font-bold mb-4 text-gray-800 dark:text-gray-700">Create Account</h2>
-
-                @if(Session::has('fail'))
-                    <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
-                        <strong class="font-bold">Success!</strong>
-                        <span class="block sm:inline">{{ Session::get('fail') }}</span>
-                    </div>
-                @endif
-
-                <form action="insert" method="POST">
-                    @csrf
-
-                    <div class="mb-4">
-                        <label for="student_id" class="block text-sm font-medium text-gray-700 dark:text-gray-700">Student ID</label>
-                        <input type="number" name="student_id" id="student_id" class="mt-1 block w-full border border-gray-300 dark:border-gray-600 rounded-md shadow-sm px-3 py-3 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100" value="{{old('student_id')}}" required>
-                        <span style="color: red">
-                            @error('student_id') {{ $message }} @enderror
-                        </span>
+                <form id="addAccountForm">
+                    <div class="mb-3">
+                        <label for="student_id" class="block font-medium mb-1">Student ID</label>
+                        <input type="number" id="student_id" name="student_id" class="w-full border rounded px-3 py-2" required />
                     </div>
 
-                    <div class="mb-4">
-                        <label for="username" class="block text-sm font-medium text-gray-700 dark:text-gray-700">Username</label>
-                        <input type="text" name="username" id="username" class="mt-1 block w-full border border-gray-300 dark:border-gray-600 rounded-md shadow-sm px-3 py-3 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100" value="{{old('username')}}" required>
-                        <span style="color: red">
-                            @error('username') {{ $message }} @enderror
-                        </span>
+                    <div class="mb-3">
+                        <label for="username" class="block font-medium mb-1">Username</label>
+                        <input type="text" id="username" name="username" class="w-full border rounded px-3 py-2" required />
                     </div>
 
-                    <div class="mb-4">
-                        <label for="password" class="block text-sm font-medium text-gray-700 dark:text-gray-700">Password</label>
-                        <input type="password" name="password" id="password" class="mt-1 block w-full border border-gray-300 dark:border-gray-600 rounded-md shadow-sm px-3 py-3 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100" value="{{old('password')}}" required>
-                        <span style="color: red">
-                            @error('password') {{ $message }} @enderror
-                        </span>
+                    <div class="mb-3">
+                        <label for="password" class="block font-medium mb-1">Password</label>
+                        <input minlength="8" type="password" id="password" name="password" class="w-full border rounded px-3 py-2" required />
                     </div>
 
-                    <div class="mb-4">
-                        <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-700">Email</label>
-                        <input type="email" name="email" id="email" class="mt-1 block w-full border border-gray-300 dark:border-gray-600 rounded-md shadow-sm px-3 py-3 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100" value="{{old('email')}}" required>
-                        <span style="color: red">
-                            @error('email') {{ $message }} @enderror
-                        </span>
+                    <div class="mb-3">
+                        <label for="email" class="block font-medium mb-1">Email</label>
+                        <input type="email" id="email" name="email" class="w-full border rounded px-3 py-2" required />
                     </div>
 
-                    <div class="flex justify-end">
-                        <button id="insertData" type="submit" class="bg-blue-600 hover:bg-blue-700 text-gray-700 font-semibold py-2 px-4 rounded shadow-md transition duration-200 ease-in-out">
-                            Add Account
-                        </button>
+                    <div class="flex justify-end gap-3 mt-4">
+                        <button type="button" id="cancelAddBtn" class="addbtnCANCEL">Cancel</button>
+                        <button type="submit" id="submitAddBtn" class="addbtnADD">Add</button>
                     </div>
                 </form>
             </div>
         </div>
 
 
-        <!-- data password modal -->
-        <div id="passwordModal" class="fixed inset-0 flex items-center justify-center z-50 hidden bg-black bg-opacity-50">
+        <!-- Password Modal -->
+        <div id="passwordModal" class="fixed inset-0 z-50 hidden">
+            <!-- Overlay -->
             <div class="overlayModalTable">
-                <div class="bg-white w-[500px] h-[500px] rounded-lg shadow-xl relative flex flex-col justify-center items-center text-center p-6">
-                
-                    <p id="passwordContent" class="mb-6 font-mono text-gray-800 break-all text-lg"></p>
-
-                    <button id="closeModalBtn" class="closePassModal">
-                        Close
+                <!-- Modal Content -->
+                <div class="relative bg-white/20 backdrop-blur-md w-[400px] shadow-2xl border border-white/30 p-8 flex flex-col items-center text-center">
+                    
+                    <!-- Close Button -->
+                    <button id="closeModalBtn" class="closePassModal absolute top-3 right-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                        </svg>
                     </button>
+
+                    <!-- Modal Title -->
+                    <h2 class="text-xl font-semibold text-white mb-4 PI">Password Information</h2>
+
+                    <!-- Password Content -->
+                    <p id="passwordContent" class="bg-white text-gray-800 px-4 py-2 rounded-md text-base font-mono shadow-inner break-words max-w-full"></p>
                 </div>
             </div>
         </div>
@@ -125,7 +108,7 @@
 
                 <div class="mb-3">
                     <label for="editPassword" class="block font-medium mb-1">Password</label>
-                    <input type="password" id="editPassword" name="password" class="w-full border rounded px-3 py-2" required/>
+                    <input type="password" id="editPassword" name="password" class="w-full border rounded px-3 py-2" minlength="8"/>
                 </div>
 
                 <div class="mb-3">
@@ -199,28 +182,51 @@
         </script>
         @endif
 
-        @if(session('success_add_student'))
-            <div id="successAddStudent">
-                <div id="successAddStudentOverlay">
-                    <div class="successModalContent animate-scaleIn">
-                        <svg id="success_icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
-                        </svg>
-                        <h2 class="successModalTitle">Success!</h2>
-                        <p class="successModalMessage">Account successfully added.</p>
-                    </div>
-                </div>
-            </div>
+        <!-- Success Modal -->
+        <div id="successModal" class="hidden fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center">
+            <div class="content_success_insert">
 
-            <script>
-                setTimeout(() => {
-                    const modal = document.getElementById('successAddStudent');
-                    if (modal) {
-                        modal.style.display = 'none';
-                    }
-                }, 3000);
-            </script>
-        @endif
+            <div class="sparkle sparkle1"></div>
+            <div class="sparkle sparkle2"></div>
+            <div class="sparkle sparkle3"></div>
+            <div class="sparkle sparkle4"></div>
+            <div class="sparkle sparkle5"></div>
+            <div class="sparkle sparkle6"></div>
+            <div class="sparkle sparkle7"></div>
+            <div class="sparkle sparkle8"></div>
+
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                </svg>
+
+                <h2 class="text-lg font-semibold">Success</h2>
+                <p>Account successfully added!</p>
+            </div>
+        </div>
+
+        <!-- Edit Success Modal -->
+        <div id="editSuccessModal" class="hidden fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center">
+            <div class="content_success_edit">
+
+                <div class="sparkle sparkle01"></div>
+                <div class="sparkle sparkle02"></div>
+                <div class="sparkle sparkle03"></div>
+                <div class="sparkle sparkle04"></div>
+                <div class="sparkle sparkle05"></div>
+                <div class="sparkle sparkle06"></div>
+                <div class="sparkle sparkle07"></div>
+                <div class="sparkle sparkle08"></div>
+
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                </svg>
+
+                <h2 class="text-lg font-semibold">Success</h2>
+                <p>Account successfully updated!</p>
+            </div>
+        </div>
+
+
 
 
 </x-app-layout>

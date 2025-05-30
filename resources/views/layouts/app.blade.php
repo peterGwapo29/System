@@ -39,7 +39,8 @@
             </main>
         </div>
 
-        <script src="{{asset('JS/accountmodal.js')}}"></script>
+        <script src="{{asset('JS/addAccount.js')}}"></script>
+        <script src="{{asset('JS/deleteAccount.js')}}"></script>
         <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
         <script src="https://cdn.datatables.net/2.3.0/js/dataTables.min.js"></script>
         <script src="{{asset('JS/custom.js')}}"></script>

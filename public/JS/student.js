@@ -101,6 +101,8 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
+
+// Edit Student Form Submission
 document.addEventListener('click', function (event) {
     if (event.target.closest('.editStudentModal')) {
         const button = event.target.closest('.editStudentModal');
@@ -158,8 +160,7 @@ document.getElementById('editStudentForm').addEventListener('submit', function (
     });
 });
 
-
-
+// Deletion confirmation modal
 let studentIdToDelete = null;
 
 document.querySelector('#studentTable').addEventListener('click', function(e) {
