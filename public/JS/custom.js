@@ -168,7 +168,7 @@ document.getElementById('confirmDeleteBtn').addEventListener('click', function()
         headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
         url: baseURL() + 'account/delete',
         data: { account_id: accountIdToDelete },
-        success: function (response) {
+        success: function () {
             $('#accountTable').DataTable().ajax.reload();
 
             // Hide confirmation modal
@@ -182,7 +182,7 @@ document.getElementById('confirmDeleteBtn').addEventListener('click', function()
                 modal.classList.add('hidden');
             }, 2500);
         },
-        error: function (err) {
+        error: function () {
             alert('Failed to delete account.');
         }
     });

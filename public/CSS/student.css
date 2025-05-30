@@ -231,3 +231,25 @@
 .deleteStudentBtn:hover{
     opacity: .8;
 }
+#deleteModal{
+    width: 500px;
+}
+#delete_success_icon{
+    height: 50px;
+    display: block;
+    filter: drop-shadow(0 4px 6px rgba(12, 119, 35, 0.5));
+    color: rgb(12, 119, 35);
+    margin-left: auto;
+    margin-right: auto;
+}
+#studentDeleteModal{
+    text-align: center;
+    backdrop-filter: blur(6px);
+    background-color: rgba(0, 0, 0, 0.4);
+    -webkit-backdrop-filter: blur(6px);
+
+}
+#deleteMod{
+    border-radius: 10px;
+    width: 400px;
+}

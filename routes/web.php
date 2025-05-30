@@ -37,7 +37,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/student/list', [StudentController::class, 'student_dataTables'])->name('student_dataTables');
     Route::post('/insertStudent', [StudentController::class, 'insertStudent']);
     Route::post('/student/update/{id}', [StudentController::class, 'update']);
-    // Route::post('/student/delete', [App\Http\Controllers\StudentController::class, 'deleteStudent'])->name('student.delete');
+    Route::post('/student/delete', [App\Http\Controllers\StudentController::class, 'deleteStudent'])->name('student.delete');
     
 
     Route::get('/membership', [MembershipController::class, 'membership'])->name('membership');

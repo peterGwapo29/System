@@ -145,7 +145,6 @@ document.getElementById('editStudentForm').addEventListener('submit', function (
             const updateModal = document.getElementById('studentUpdateModal');
             updateModal.classList.remove('hidden');
 
-            // Auto-hide after 3 seconds
             setTimeout(() => {
                 updateModal.classList.add('hidden');
             }, 3000);
@@ -161,13 +160,12 @@ document.getElementById('editStudentForm').addEventListener('submit', function (
 
 
 
-let studentIdToDelete = null; // Track which student to delete
+let studentIdToDelete = null;
 
-// Trigger delete modal when delete button is clicked
 document.querySelector('#studentTable').addEventListener('click', function(e) {
     if (e.target.closest('.deleteStudentBtn')) {
         const el = e.target.closest('.deleteStudentBtn');
-        studentIdToDelete = el.dataset.account_id;
+        studentIdToDelete = el.dataset.student_id;
 
         // Show the deletion confirmation modal
         document.getElementById('studentDLTConfirmModal').classList.remove('hidden');
@@ -188,22 +186,20 @@ document.getElementById('studentDLTConfirmBtn').addEventListener('click', functi
         type: 'post',
         headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
         url: baseURL() + 'student/delete',
-        data: { account_id: studentIdToDelete },
-        success: function (response) {
+        data: { student_id: studentIdToDelete },
+        success: function () {
             $('#studentTable').DataTable().ajax.reload();
 
-            // Hide confirmation modal
             document.getElementById('studentDLTConfirmModal').classList.add('hidden');
             studentIdToDelete = null;
 
-            // Show success modal
-            const modal = document.getElementById('studentUpdateModal');
+            const modal = document.getElementById('studentDeleteModal');
             modal.classList.remove('hidden');
             setTimeout(() => {
                 modal.classList.add('hidden');
             }, 2500);
         },
-        error: function (err) {
+        error: function () {
             alert('Failed to delete student.');
         }
     });

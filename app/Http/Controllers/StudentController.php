@@ -107,6 +107,4 @@ public function deleteStudent(Request $request){
             return response()->json(['status' => 'error', 'message' => 'Failed to delete account.'], 400);
         }
     }
-
-
 }

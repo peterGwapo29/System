@@ -258,4 +258,19 @@
             </div>
         </div>
 
+        <!-- Modal for Successful Delete -->
+        <div id="studentDeleteModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 hidden">
+            <div id="deleteMod" class="bg-white shadow-lg p-6 text-center animate-scaleIn">
+                <div class="modalContentDelete animate-scaleIn">
+                    <svg id="delete_success_icon" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M4.5 12.75l6 6 9-13.5" />
+                    </svg>
+                    <h2 class="modalTitleDelete">Student Deleted Successfully</h2>
+                    <p class="modalMessageDelete">The student record has been updated.</p>
+                </div>
+            </div>
+        </div>
+
 </x-app-layout>
