@@ -32,6 +32,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/studentAccount/list', [AccountController::class, 'studentAcc_dataTables'])->name('studentAcc_dataTables');
     Route::post('/account/update', [AccountController::class, 'update_account']);
     Route::post('/account/delete', [App\Http\Controllers\AccountController::class, 'deleteAccount'])->name('account.delete');
+    Route::post('/account/restore', [App\Http\Controllers\AccountController::class, 'restoreAccount'])->name('account.restore');
 
     //STUDENT
     Route::get('/student', [StudentController::class, 'student'])->name('student');

@@ -1,22 +1,19 @@
-let accountIdToDelete = null; // Track which account to delete
+let accountIdToDelete = null;
 
 document.querySelector('#accountTable').addEventListener('click', function(e) {
     if (e.target.closest('.deleteAccountBtn')) {
         const el = e.target.closest('.deleteAccountBtn');
         accountIdToDelete = el.dataset.account_id;
 
-        // Show confirmation modal
         document.getElementById('deleteConfirmModal').classList.remove('hidden');
     }
 });
 
-// Cancel button
 document.getElementById('cancelDeleteBtn').addEventListener('click', function() {
     document.getElementById('deleteConfirmModal').classList.add('hidden');
     accountIdToDelete = null;
 });
 
-// Confirm button
 document.getElementById('confirmDeleteBtn').addEventListener('click', function() {
     if (!accountIdToDelete) return;
 
@@ -32,11 +29,9 @@ document.getElementById('confirmDeleteBtn').addEventListener('click', function()
         success: function () {
             $('#accountTable').DataTable().ajax.reload();
 
-            // Hide confirmation modal
             document.getElementById('deleteConfirmModal').classList.add('hidden');
             accountIdToDelete = null;
 
-            // Show success modal
             const modal = document.getElementById('deleteSuccessModal');
             modal.classList.remove('hidden');
             setTimeout(() => {

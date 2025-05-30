@@ -14,17 +14,22 @@ class AccountController extends Controller
         return view('Account.accountList', ['accounts' => $accounts]);
     }
 
-    public function studentAcc_dataTables(){
-        // $accounts = DB::select('SELECT * FROM student_account');
-        $accounts = DB::table('student_account')
-                  ->where('account_status', 'Active')
-                  ->get();
+    public function studentAcc_dataTables(Request $request){
+        $status = $request->input('status');
 
-        return DataTables::of($accounts)->make(true);
+        $query = DB::table('student_account');
+
+        if ($status === 'active') {
+            $query->where('account_status', 'Active');
+        } elseif ($status === 'inactive') {
+            $query->where('account_status', 'Inactive');
+        }
+
+        return DataTables::of($query)->make(true);
     }
 
-   public function store(Request $request)
-{
+
+   public function store(Request $request){
     try {
         $student_id = $request->input('student_id');
         $username = $request->input('username');
@@ -92,6 +97,20 @@ class AccountController extends Controller
             'editStatus' => 'required',
         ]);
 
+        // Check if the username already exists for another account
+        $existing = DB::table('student_account')
+            ->where('username', $request->input('editUsername'))
+            ->where('account_id', '!=', $request->input('editAccountId'))
+            ->exists();
+
+        if ($existing) {
+            return response()->json([
+                'status' => 'error',
+                'field' => 'username',
+                'message' => 'Username is already taken.',
+            ], 422);
+        }
+
         $params = [
             'student_id' => $request->input('editStudentId'),
             'username' => $request->input('editUsername'),
@@ -132,5 +151,26 @@ class AccountController extends Controller
             return response()->json(['status' => 'error', 'message' => 'Failed to delete account.'], 400);
         }
     }
+
+    public function restoreAccount(Request $request){
+        $id = $request->input('account_id');
+
+        $updated = DB::table('student_account')
+            ->where('account_id', $id)
+            ->update(['account_status' => 'Active']);
+
+        if ($updated) {
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Account successfully restored.'
+            ]);
+        } else {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Failed to restore the account. Please try again.'
+            ], 400);
+        }
+    }
+
 
 }

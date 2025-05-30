@@ -84,8 +84,7 @@ label{
 }
 
 #closeEditModalBtn{
-    color: rgb(249, 249, 249);
-    background-color: #6c757d;
+    color: rgb(4, 4, 4);
     border-radius: 4px;
     width: 100px;
     padding: 4px;
@@ -104,9 +103,6 @@ label{
     color: #ffffff;
 }
 
-#closeEditModalBtn{
-    background-color: #6c757d;
-}
 #closeEditModalBtn:hover{
     opacity: .9;
 }
@@ -165,8 +161,7 @@ label{
     border-radius: 14px;
 }
 #cancelDeleteBtn{
-    background-color: #858686;
-    color: rgb(249, 249, 249);
+    color: #141414;
     border-radius: 4px;
 }
 #confirmDeleteBtn{
@@ -349,8 +344,7 @@ input[type=number] {
 
 /* Button Styles */
 .addbtnCANCEL {
-    background-color: #6c757d;
-    color: #ffffff;
+    color: #080808;
     padding: 4px 16px;
     border-radius: 4px;
     cursor: pointer;
@@ -464,4 +458,71 @@ input[type=number] {
         transform: scale(1.5) translateY(-10px);
         opacity: 0.3;
     }
+}
+#filterStatus{
+    color: white;
+    width: 108px;
+    margin-left: 12px;
+    background-color: #1f2937;
+}
+#restoreIcon{
+    cursor: pointer;
+    height: 18px;
+    display: block;
+    color: #28a745;
+}
+#restoreIcon:hover{
+    opacity: .8;
+}
+#restoreConfirmModal{
+    backdrop-filter: blur(6px);
+    background-color: rgba(0, 0, 0, 0.6);
+    -webkit-backdrop-filter: blur(6px);
+}
+
+#confirmRestoreBtn{
+    background-color: rgb(39, 155, 7);
+    color: rgb(249, 249, 249);
+    border-radius: 4px;
+    width: 100px;
+    padding: 4px;
+}
+#confirmRestoreBtn:hover{
+    opacity: .9;
+}
+
+#restore_icon{
+    height: 50px;
+    display: block;
+    color: rgb(39, 155, 7);
+    filter: drop-shadow(0 4px 6px rgb(39, 155, 7));
+}
+.background_restore{
+    border-radius: 8px;
+    width: 500px;
+    text-align: center;
+}
+
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    font-weight: 600;
+    font-size: 0.9rem;
+    gap: 6px;
+}
+
+.status-circle {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.active-status .status-circle {
+    background-color: #22c55e;
+}
+
+.inactive-status .status-circle {
+    background-color: #6b7280;
+    opacity: 0.7;
 }

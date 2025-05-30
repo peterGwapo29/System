@@ -36,7 +36,6 @@ document.getElementById('addAccountForm').addEventListener('submit', function (e
         email: document.getElementById('email').value,
     };
 
-    // Disable submit button to prevent double click
     submitBtn.disabled = true;
     submitBtn.textContent = 'Adding...';
 
