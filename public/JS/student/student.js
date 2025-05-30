@@ -3,7 +3,12 @@ function baseURL() {
 }
 
 new DataTable('#studentTable', {
-    ajax: baseURL()+'student/list',
+    ajax: {
+        url: baseURL() + 'student/list',
+        data: function (d) {
+            d.status = document.getElementById('filterStatusStudent').value;
+        }
+    },
     processing: true,
     serverSide: true,
     columnDefs: [
@@ -111,30 +116,13 @@ new DataTable('#studentTable', {
     ]
 });
 
+document.getElementById('filterStatusStudent').addEventListener('change', function () {
+    $('#studentTable').DataTable().ajax.reload();
+});
+
 document.getElementById('closeEditStudentModalBtn').addEventListener('click', function() {
     document.getElementById('editStudentModal').classList.add('hidden');
 });
-
-document.addEventListener('DOMContentLoaded', function () {
-    const addStudentButton = document.getElementById('addStudentButton');
-    const studentModal = document.getElementById('studentModal');
-    const closeModalStudent = document.getElementById('closeModalStudent');
-
-    addStudentButton.addEventListener('click', function () {
-        studentModal.classList.remove('hidden');
-    });
-
-    closeModalStudent.addEventListener('click', function () {
-        studentModal.classList.add('hidden');
-    });
-
-    window.addEventListener('click', function (event) {
-        if (event.target === studentModal) {
-            studentModal.classList.add('hidden');
-        }
-    });
-});
-
 
 // Edit Student Form Submission
 document.addEventListener('click', function (event) {
@@ -157,13 +145,18 @@ document.addEventListener('click', function (event) {
     }
 });
 
-
 document.getElementById('editStudentForm').addEventListener('submit', function (e) {
     e.preventDefault();
+    const submitBtn = document.getElementById('updateStudentSubmit');
+    const studentForm = studentModal.querySelector('form');
 
     const form = e.target;
     const formData = new FormData(form);
     const studentId = formData.get('student_id');
+
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Saving...';
 
     fetch(baseURL() + 'student/update/' + studentId, {
         method: 'POST',
@@ -178,64 +171,25 @@ document.getElementById('editStudentForm').addEventListener('submit', function (
             document.getElementById('editStudentModal').classList.add('hidden');
             $('#studentTable').DataTable().ajax.reload();
 
-            const updateModal = document.getElementById('studentUpdateModal');
+            const updateModal = document.getElementById('editSuccessModalStudent');
             updateModal.classList.remove('hidden');
 
             setTimeout(() => {
                 updateModal.classList.add('hidden');
-            }, 3000);
+            }, 2000);
+
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Save';
+            studentForm.reset();
         } else {
             alert(data.message || 'Student name already exists.');
+            studentForm.reset();
         }
     })
     .catch(error => {
         console.error('Error:', error);
         alert('An error occurred.');
-    });
-});
-
-// Deletion confirmation modal
-let studentIdToDelete = null;
-
-document.querySelector('#studentTable').addEventListener('click', function(e) {
-    if (e.target.closest('.deleteStudentBtn')) {
-        const el = e.target.closest('.deleteStudentBtn');
-        studentIdToDelete = el.dataset.student_id;
-
-        // Show the deletion confirmation modal
-        document.getElementById('studentDLTConfirmModal').classList.remove('hidden');
-    }
-});
-
-// Cancel deletion
-document.getElementById('studentDLTCancelBtn').addEventListener('click', function() {
-    document.getElementById('studentDLTConfirmModal').classList.add('hidden');
-    studentIdToDelete = null;
-});
-
-// Confirm deletion
-document.getElementById('studentDLTConfirmBtn').addEventListener('click', function() {
-    if (!studentIdToDelete) return;
-
-    $.ajax({
-        type: 'post',
-        headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
-        url: baseURL() + 'student/delete',
-        data: { student_id: studentIdToDelete },
-        success: function () {
-            $('#studentTable').DataTable().ajax.reload();
-
-            document.getElementById('studentDLTConfirmModal').classList.add('hidden');
-            studentIdToDelete = null;
-
-            const modal = document.getElementById('studentDeleteModal');
-            modal.classList.remove('hidden');
-            setTimeout(() => {
-                modal.classList.add('hidden');
-            }, 2500);
-        },
-        error: function () {
-            alert('Failed to delete student.');
-        }
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Save';
     });
 });

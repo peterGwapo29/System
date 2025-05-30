@@ -120,7 +120,6 @@ document.getElementById('filterStatus').addEventListener('change', function () {
     $('#accountTable').DataTable().ajax.reload();
 });
 
-
 function showPasswordModal(password) {
     document.getElementById('passwordContent').textContent = password;
     document.getElementById('passwordModal').classList.remove('hidden');

@@ -320,3 +320,353 @@
     width: 500px;
     text-align: center;
 }
+
+/* Store */
+#editSuccessModalStudent {
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    text-align: center;
+}
+
+.content_success_edit_student {
+    width: 350px;
+    background-color: white;
+    border-radius: 12px;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    animation: fadeInEditStudent 0.3s ease-out;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Sparkle particles for edit modal */
+.sparkle000001, .sparkle000002, .sparkle000003, .sparkle000004,
+.sparkle000005, .sparkle000006, .sparkle000007, .sparkle000008 {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: gold;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: sparkleEditStudent 1.5s infinite ease-in-out;
+    z-index: 1;
+}
+
+.sparkle000001 { top: 20px; left: 40px; animation-delay: 0s; }
+.sparkle000002 { top: 30px; right: 50px; animation-delay: 0.3s; }
+.sparkle000003 { bottom: 40px; left: 60px; animation-delay: 0.6s; }
+.sparkle000004 { bottom: 30px; right: 30px; animation-delay: 0.9s; }
+.sparkle000005 { top: 10px; right: 80px; animation-delay: 1.2s; }
+.sparkle000006 { bottom: 20px; left: 100px; animation-delay: 1.4s; }
+.sparkle000007 { bottom: 15px; left: 30px; animation-delay: 1.4s; }
+.sparkle000008 { bottom: 25px; left: 20px; animation-delay: 1.4s; }
+
+/* Checkmark icon style */
+#editSuccessModalStudent svg {
+    width: 70px;
+    height: 70px;
+    display: block;
+    filter: drop-shadow(0 4px 6px rgba(12, 119, 35, 0.5));
+    color: rgb(12, 119, 35);
+    z-index: 2;
+}
+
+/* Animation keyframes */
+@keyframes fadeInEditStudent {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes sparkleEditStudent{
+    0%, 100% {
+        transform: scale(1) translateY(0);
+        opacity: 0.8;
+    }
+    50% {
+        transform: scale(1.5) translateY(-10px);
+        opacity: 0.3;
+    }
+}
+#closeEditStudentModalBtn{
+    background-color: white;
+    color: rgb(17, 17, 17);
+    font-weight: normal;
+}
+#studentDLTCancelBtn{
+    background-color: white;
+    color: rgb(17, 17, 17);
+    font-weight: normal;
+}
+
+/* Edit */
+#storeSuccessModalStudent {
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    text-align: center;
+}
+
+.content_success_store_student {
+    width: 350px;
+    background-color: white;
+    border-radius: 12px;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    animation: fadeInRestoreStudent 0.3s ease-out;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Sparkle particles for edit modal */
+.sparkle00001, .sparkle00002, .sparkle00003, .sparkle00004,
+.sparkle00005, .sparkle00006, .sparkle00007, .sparkle00008 {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: gold;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: sparkleRestoreStudent 1.5s infinite ease-in-out;
+    z-index: 1;
+}
+
+.sparkle00001 { top: 20px; left: 40px; animation-delay: 0s; }
+.sparkle00002 { top: 30px; right: 50px; animation-delay: 0.3s; }
+.sparkle00003 { bottom: 40px; left: 60px; animation-delay: 0.6s; }
+.sparkle00004 { bottom: 30px; right: 30px; animation-delay: 0.9s; }
+.sparkle00005 { top: 10px; right: 80px; animation-delay: 1.2s; }
+.sparkle00006 { bottom: 20px; left: 100px; animation-delay: 1.4s; }
+.sparkle00007 { bottom: 15px; left: 30px; animation-delay: 1.4s; }
+.sparkle00008 { bottom: 25px; left: 20px; animation-delay: 1.4s; }
+
+/* Checkmark icon style */
+#storeSuccessModalStudent svg {
+    width: 70px;
+    height: 70px;
+    display: block;
+    filter: drop-shadow(0 4px 6px rgba(12, 119, 35, 0.5));
+    color: rgb(12, 119, 35);
+    z-index: 2;
+}
+
+/* Animation keyframes */
+@keyframes fadeInRestoreStudent {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes sparkleRestoreStudent{
+    0%, 100% {
+        transform: scale(1) translateY(0);
+        opacity: 0.8;
+    }
+    50% {
+        transform: scale(1.5) translateY(-10px);
+        opacity: 0.3;
+    }
+}
+#closeEditStudentModalBtn{
+    background-color: white;
+    color: rgb(17, 17, 17);
+    font-weight: normal;
+}
+#studentDLTCancelBtn{
+    background-color: white;
+    color: rgb(17, 17, 17);
+    font-weight: normal;
+}
+
+/* DELETE */
+#deleteSuccessModalStudent {
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    text-align: center;
+}
+
+.content_success_delete_student {
+    width: 350px;
+    background-color: white;
+    border-radius: 12px;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    animation: fadeInDeleteStudent 0.3s ease-out;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Sparkle particles for edit modal */
+.sparkle0000001, .sparkle000002, .sparkle000003, .sparkle000004,
+.sparkle0000005, .sparkle000006, .sparkle000007, .sparkle000008 {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: gold;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: sparkleDeleteStudent 1.5s infinite ease-in-out;
+    z-index: 1;
+}
+
+.sparkle0000001 { top: 20px; left: 40px; animation-delay: 0s; }
+.sparkle0000002 { top: 30px; right: 50px; animation-delay: 0.3s; }
+.sparkle0000003 { bottom: 40px; left: 60px; animation-delay: 0.6s; }
+.sparkle0000004 { bottom: 30px; right: 30px; animation-delay: 0.9s; }
+.sparkle0000005 { top: 10px; right: 80px; animation-delay: 1.2s; }
+.sparkle0000006 { bottom: 20px; left: 100px; animation-delay: 1.4s; }
+.sparkle0000007 { bottom: 15px; left: 30px; animation-delay: 1.4s; }
+.sparkle0000008 { bottom: 25px; left: 20px; animation-delay: 1.4s; }
+
+/* Checkmark icon style */
+#deleteSuccessModalStudent svg {
+    width: 70px;
+    height: 70px;
+    display: block;
+    filter: drop-shadow(0 4px 6px rgba(12, 119, 35, 0.5));
+    color: rgb(12, 119, 35);
+    z-index: 2;
+}
+
+/* Animation keyframes */
+@keyframes fadeInDeleteStudent {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes sparkleDeleteStudent{
+    0%, 100% {
+        transform: scale(1) translateY(0);
+        opacity: 0.8;
+    }
+    50% {
+        transform: scale(1.5) translateY(-10px);
+        opacity: 0.3;
+    }
+}
+
+#closeEditStudentModalBtn{
+    background-color: white;
+    color: rgb(17, 17, 17);
+    font-weight: normal;
+}
+#studentDLTCancelBtn{
+    background-color: white;
+    color: rgb(17, 17, 17);
+    font-weight: normal;
+}
+
+/* DELETE */
+#addSuccessModalStudent {
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    text-align: center;
+}
+
+.content_success_add_student {
+    width: 350px;
+    background-color: white;
+    border-radius: 12px;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    animation: fadeInAddStudent 0.3s ease-out;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Sparkle particles for edit modal */
+.sparkle00000001, .sparkle0000002, .sparkle0000003, .sparkle0000004,
+.sparkle00000005, .sparkle0000006, .sparkle0000007, .sparkle0000008 {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: gold;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: sparkleAddStudent 1.5s infinite ease-in-out;
+    z-index: 1;
+}
+
+.sparkle00000001 { top: 20px; left: 40px; animation-delay: 0s; }
+.sparkle00000002 { top: 30px; right: 50px; animation-delay: 0.3s; }
+.sparkle00000003 { bottom: 40px; left: 60px; animation-delay: 0.6s; }
+.sparkle00000004 { bottom: 30px; right: 30px; animation-delay: 0.9s; }
+.sparkle00000005 { top: 10px; right: 80px; animation-delay: 1.2s; }
+.sparkle00000006 { bottom: 20px; left: 100px; animation-delay: 1.4s; }
+.sparkle00000007 { bottom: 15px; left: 30px; animation-delay: 1.4s; }
+.sparkle00000008 { bottom: 25px; left: 20px; animation-delay: 1.4s; }
+
+/* Checkmark icon style */
+#addSuccessModalStudent svg {
+    width: 70px;
+    height: 70px;
+    display: block;
+    filter: drop-shadow(0 4px 6px rgba(12, 119, 35, 0.5));
+    color: rgb(12, 119, 35);
+    z-index: 2;
+}
+
+/* Animation keyframes */
+@keyframes fadeInAddStudent {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes sparkleAddStudent{
+    0%, 100% {
+        transform: scale(1) translateY(0);
+        opacity: 0.8;
+    }
+    50% {
+        transform: scale(1.5) translateY(-10px);
+        opacity: 0.3;
+    }
+}
+
+#closeEditStudentModalBtn{
+    background-color: white;
+    color: rgb(17, 17, 17);
+    font-weight: normal;
+}
+#studentDLTCancelBtn{
+    background-color: white;
+    color: rgb(17, 17, 17);
+    font-weight: normal;
+}
