@@ -1,0 +1,88 @@
+#filterStatusMembership{
+    color: white;
+    width: 108px;
+    margin-left: 12px;
+    background-color: #1f2937;
+}
+#addMembershipButton{
+    background-color: rgb(39, 155, 7);
+}
+
+#addMembershipButton:hover{
+    opacity: .9;
+}
+#filterStatusMembership{
+    color: white;
+    width: 108px;
+    margin-left: 12px;
+    background-color: #1f2937;
+}
+.status-badge-membership{
+    display: inline-flex;
+    align-items: center;
+    font-weight: 600;
+    font-size: 0.9rem;
+    gap: 6px;
+}
+.status-circle-membership{
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+.active-status-membership .status-circle-membership {
+    background-color: #22c55e;
+}
+
+.inactive-status-membership .status-circle-membership {
+    background-color: #6b7280;
+    opacity: 0.7;
+}
+
+/* Edit Icon */
+#editAccountModal {
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+}
+.editMshipModal{
+    color: rgb(13, 110, 253);
+}
+.editMshipModal{
+    color: rgb(13, 110, 253);
+}
+.editMshipModal:hover{
+    opacity: .8;
+}
+
+/* delete Icon */
+.deleteMshipBtn{
+    color: rgb(175, 20, 20);
+}
+.deleteMshipBtn:hover{
+    opacity: .8;
+}
+
+/* Add Membership Modal */
+#membershipModal{
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+}
+.backgroundModalMembership {
+    width: 50%;
+    background-color: white;
+}
+#closeModalMembership{
+    margin-right: 24px;
+}
+
+#closeModalMembership svg:hover{
+    color: red;
+}
+#submitMembershipBtn{
+    background-color: rgb(39, 155, 7);
+    color: white;
+    font-weight: normal;
+}
+#submitMembershipBtn:hover{
+    opacity: .9;
+}

@@ -117,11 +117,6 @@
         </div>
     </div>
 
-
-
-
-
-
     <!-- Edit Student Modal -->
     <div id="editStudentModal" class="modal hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
         <div class="modal-content bg-white rounded-lg shadow-lg w-96 p-6 relative animate-scaleIn">

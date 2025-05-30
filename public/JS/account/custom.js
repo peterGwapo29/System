@@ -70,7 +70,7 @@ new DataTable('#accountTable', {
             data: null,
             title: 'Action',
             sortable: false,
-            render: function(data, type, row) {
+            render: function(row) {
                 if (row.account_status === 'Inactive') {
                     return `<span class="text-gray-400 italic">
                                 <a href="javascript:void(0)"

@@ -37,13 +37,14 @@ Route::middleware('auth')->group(function () {
     //STUDENT
     Route::get('/student', [StudentController::class, 'student'])->name('student');
     Route::get('/student/list', [StudentController::class, 'student_dataTables'])->name('student_dataTables');
-    // Route::post('/insertStudent', [StudentController::class, 'insertStudent']);
     Route::post('/insertStudent', [StudentController::class, 'store'])->name('student.store');
     Route::post('/student/update/{id}', [StudentController::class, 'update']);
     Route::post('/student/delete', [App\Http\Controllers\StudentController::class, 'deleteStudent'])->name('student.delete');
     Route::post('/student/restore', [App\Http\Controllers\StudentController::class, 'restoreStudent'])->name('student.restore');
 
+    //MEMBERSIP
     Route::get('/membership', [MembershipController::class, 'membership'])->name('membership');
+    Route::get('/membership/list', [MembershipController::class, 'membership_dataTables'])->name('membership_dataTables');
 
 
     Route::get('/club', [ClubController::class, 'club'])->name('club');
