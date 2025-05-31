@@ -14,19 +14,19 @@ $(document).ready(function() {
                 data: 'club_id',
                 name: 'club_id',
                 title: 'Club ID',
-                className: 'px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100'
+                className: 'text-left'
             },
             {
                 data: 'club_name',
                 name: 'club_name',
                 title: 'Club Name',
-                className: 'px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100'
+                className: 'text-left'
             },
             {
                 data: 'club_description',
                 name: 'club_description',
                 title: 'Description',
-                className: 'px-6 py-4 text-m text-gray-900 dark:text-gray-100',
+                className: 'text-left',
                 render: function(data) {
                     const maxLength = 50;
                     if (data.length > maxLength) {
@@ -39,14 +39,14 @@ $(document).ready(function() {
                 data: 'adviser_name',
                 name: 'adviser_name',
                 title: 'Adviser Name',
-                className: 'px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100'
+                className: 'text-left'
             },
             
             { 
                 data: 'status',
                 name: 'status',
                 title: 'Status',
-                className: 'px-6 py-4 whitespace-nowrap text-sm',
+                className: 'text-left',
                 render: function(data) {
                     if (data === 'Active') {
                         return '<span class="status-badge-club active-status-club"><span class="status-circle-club"></span> Active</span>';
@@ -60,7 +60,7 @@ $(document).ready(function() {
                 orderable: false,
                 searchable: false,
                 title: 'Actions',
-                className: 'px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100',
+                className: 'text-left',
                 render: function(data) {
                     if (data.status === 'Inactive') {
                         return `<span class="text-gray-400 italic">
@@ -68,11 +68,13 @@ $(document).ready(function() {
                                 class="table-action restoreClubBtn"
                                 title="Restore Club"
                                 data-club_id="${data.club_id}">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                <svg id="restoreIcon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" 
+                                    stroke-width="1.5" stroke="currentColor" class=" h-5">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
                                 </svg>
                             </a>
                         </span>`;
+
                     }
 
                     return `<div id="table-action">

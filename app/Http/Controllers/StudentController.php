@@ -120,9 +120,9 @@ class StudentController extends Controller
             ->update(['status' => 'Inactive']);
 
         if ($updated) {
-            return response()->json(['status' => 'success', 'message' => 'Account deleted successfully.']);
+            return response()->json(['status' => 'success', 'message' => 'Student deactivated successfully.']);
         } else {
-            return response()->json(['status' => 'error', 'message' => 'Failed to delete account.'], 400);
+            return response()->json(['status' => 'error', 'message' => 'Failed to deactivate student.'], 400);
         }
     }
 

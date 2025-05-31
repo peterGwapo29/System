@@ -171,6 +171,58 @@
         </div>
     </div>
 
+    <!-- Modal for Club Deletion Confirmation -->
+    <div id="clubDLTConfirmModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 hidden">
+        <div class="bg-white rounded-xl shadow-lg p-6 w-[90%] max-w-[700px] text-center animate-scaleIn clubDLT-background">
+            
+            <div class="flex flex-col items-center mb-4">
+                <svg id="clubDLT_icon" xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                    class="h-[60px] w-[60px] text-red-600 mb-2">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M12 9v3.75m0-10.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.75c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.57-.598-3.75h-.152c-3.196 0-6.1-1.25-8.25-3.286Zm0 13.036h.008v.008H12v-.008Z" />
+                </svg>
+                <h2 class="text-2xl font-bold text-red-600">Club Deletion Required</h2>
+            </div>
+
+            <p class="text-gray-800 mb-1">
+                You're about to deactivate this club.
+            </p>
+            <span class="clubDLT-message block text-sm text-gray-800 mb-5">This action cannot be undone.</span>
+
+            <div class="flex justify-center gap-4">
+                <button id="clubDLTConfirmBtn"
+                    class="bg-red-600 text-white px-4 py-2 hover:bg-red-700 transition">Delete</button>
+                <button id="clubDLTCancelBtn"
+                    class="bg-white text-gray-800 px-4 py-2 transition">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+     <!-- delete success closeModal -->
+     <div id="deleteSuccessModalClub" class="hidden fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center">
+        <div class="content_success_delete_club">
+
+            <div class="sparkle sparkle00000001"></div>
+            <div class="sparkle sparkle00000002"></div>
+            <div class="sparkle sparkle00000003"></div>
+            <div class="sparkle sparkle00000004"></div>
+            <div class="sparkle sparkle00000005"></div>
+            <div class="sparkle sparkle00000006"></div>
+            <div class="sparkle sparkle00000007"></div>
+            <div class="sparkle sparkle00000008"></div>
+
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+            </svg>
+
+
+            <h2 class="text-lg font-semibold">Club Deactivated Successfully</h2>
+            <p>The club record has been updated!</p>
+        </div>
+    </div>
+
+
 
     <script src="{{ asset('js/club/viewClub.js') }}"></script>
     <script src="{{ asset('js/club/addClub.js') }}"></script>

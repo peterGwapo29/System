@@ -106,4 +106,19 @@ class ClubController extends Controller
             ], 500);
         }
     }
+
+    public function deleteClub(Request $request){
+        $id = $request->input('club_id');
+        $updated = DB::table('clubs')
+            ->where('club_id', $id)
+            ->update(['status' => 'Inactive']);
+
+        if ($updated) {
+            return response()->json(['status' => 'success', 'message' => 'Club deactivated successfully.']);
+        } else {
+            return response()->json(['status' => 'error', 'message' => 'Failed to deactivate club.'], 400);
+        }
+    }
+
+
 }

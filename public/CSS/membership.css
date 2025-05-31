@@ -139,4 +139,9 @@
         transform: scale(1);
         opacity: 1;
     }
-} 
+}
+#table-action{
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
