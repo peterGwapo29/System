@@ -26,7 +26,14 @@ $(document).ready(function() {
                 data: 'club_description',
                 name: 'club_description',
                 title: 'Description',
-                className: 'px-6 py-4 text-sm text-gray-900 dark:text-gray-100'
+                className: 'px-6 py-4 text-m text-gray-900 dark:text-gray-100',
+                render: function(data) {
+                    const maxLength = 50;
+                    if (data.length > maxLength) {
+                        return `<span title="${data}">${data.substring(0, maxLength)}...</span>`;
+                    }
+                    return data;
+                }
             },
             {
                 data: 'adviser_name',
@@ -70,7 +77,7 @@ $(document).ready(function() {
 
                     return `<div id="table-action">
                         <a href="javascript:void(0)" 
-                            class="table-action editClubModal" 
+                            class="table-action editClubModalBtn" 
                             title="Edit Club" 
                             data-club_id="${data.club_id}"
                             data-club_name="${data.club_name}"
@@ -94,21 +101,6 @@ $(document).ready(function() {
                 }
             }
         ],
-        order: [[0, 'asc']],
-        language: {
-            processing: '<div class="flex justify-center"><svg class="animate-spin h-5 w-5 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg></div>',
-            zeroRecords: "No clubs found",
-            lengthMenu: "Show _MENU_ clubs per page",
-            info: "Showing _START_ to _END_ of _TOTAL_ clubs",
-            infoEmpty: "Showing 0 to 0 of 0 clubs",
-            infoFiltered: "(filtered from _MAX_ total clubs)",
-            paginate: {
-                first: '<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M15.707 15.707a1 1 0 01-1.414 0l-5-5a1 1 0 010-1.414l5-5a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 010 1.414zm-6 0a1 1 0 01-1.414 0l-5-5a1 1 0 010-1.414l5-5a1 1 0 011.414 1.414L5.414 10l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd"></path></svg>',
-                previous: '<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>',
-                next: '<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>',
-                last: '<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4.293 15.707a1 1 0 001.414 0l5-5a1 1 0 000-1.414l-5-5a1 1 0 00-1.414 1.414L8.586 10l-4.293 4.293a1 1 0 000 1.414zm6 0a1 1 0 001.414 0l5-5a1 1 0 000-1.414l-5-5a1 1 0 00-1.414 1.414L14.586 10l-4.293 4.293a1 1 0 000 1.414z" clip-rule="evenodd"></path></svg>'
-            }
-        }
     });
 
     // Handle status filter change
@@ -121,3 +113,4 @@ $(document).ready(function() {
         clubTable.ajax.reload();
     };
 }); 
+

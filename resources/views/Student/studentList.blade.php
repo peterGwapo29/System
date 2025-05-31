@@ -318,7 +318,7 @@
         </div>
     </div>
 
-    <!-- add success closeModal -->
+    <!-- add success modal -->
     <div id="addSuccessModalStudent" class="hidden fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center">
         <div class="content_success_add_student">
 

@@ -1,4 +1,4 @@
-#addClubutton{
+#addClubButton{
     background-color: rgb(39, 155, 7);
 }
 #addClubutton:hover{
@@ -31,4 +31,260 @@
 .inactive-status-club .status-circle-club {
     background-color: #6b7280;
     opacity: 0.7;
+}
+
+/* Modal Styles */
+#clubModal, #editClubModal {
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+}
+.modalContentClub, .modal-content {
+    width: 750px;
+    max-width: 90vw;
+}
+#closeModalClub, #closeEditClubModalBtn {
+    margin-right: 24px;
+}
+#closeModalClub:hover, #closeEditClubModalBtn:hover {
+    opacity: .9;
+}
+#insertClub, #updateClubSubmit {
+    background-color: #0d6efd;
+    font-weight: normal;
+}
+#updateClubSubmit:hover {
+    opacity: .9;
+}
+#clubErrorBox {
+    border: .5px solid red;
+}
+
+/* Add Club Success Modal */
+#addSuccessModalClub {
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    text-align: center;
+}
+
+.content_success_add_club {
+    width: 350px;
+    background-color: white;
+    border-radius: 12px;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    animation: fadeInEditClub 0.3s ease-out;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Sparkle particles for edit modal */
+.sparkle00000001, .sparkle00000002, .sparkle00000003, .sparkle00000004,
+.sparkle00000005, .sparkle00000006, .sparkle00000007, .sparkle00000008 {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: gold;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: sparkleEditClub 1.5s infinite ease-in-out;
+    z-index: 1;
+}
+
+.sparkle00000001 { top: 20px; left: 40px; animation-delay: 0s; }
+.sparkle00000002 { top: 30px; right: 50px; animation-delay: 0.3s; }
+.sparkle00000003 { bottom: 40px; left: 60px; animation-delay: 0.6s; }
+.sparkle00000004 { bottom: 30px; right: 30px; animation-delay: 0.9s; }
+.sparkle00000005 { top: 10px; right: 80px; animation-delay: 1.2s; }
+.sparkle00000006 { bottom: 20px; left: 100px; animation-delay: 1.4s; }
+.sparkle00000007 { bottom: 15px; left: 30px; animation-delay: 1.4s; }
+.sparkle00000008 { bottom: 25px; left: 20px; animation-delay: 1.4s; }
+
+/* Checkmark icon style */
+#addSuccessModalClub svg {
+    width: 70px;
+    height: 70px;
+    display: block;
+    filter: drop-shadow(0 4px 6px rgba(12, 119, 35, 0.5));
+    color: rgb(12, 119, 35);
+    z-index: 2;
+}
+
+/* Animation keyframes */
+@keyframes fadeInEditClub {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes sparkleEditClub{
+    0%, 100% {
+        transform: scale(1) translateY(0);
+        opacity: 0.8;
+    }
+    50% {
+        transform: scale(1.5) translateY(-10px);
+        opacity: 0.3;
+    }
+}
+
+/* Club success content block */
+.content_success_add_club {
+    width: 350px;
+    background-color: white;
+    border-radius: 12px;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    animation: fadeInAddClub 0.3s ease-out;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Action Buttons */
+.editClubModalBtn {
+    color: rgb(13, 110, 253);
+}
+.editClubModalBtn:hover {
+    opacity: .9;
+}
+.deleteClubBtn {
+    color: rgb(175, 20, 20);
+}
+.deleteClubBtn:hover {
+    opacity: .8;
+}
+
+/* Table Actions Container */
+#table-action {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+/* Animation for Modal */
+.animate-scaleIn {
+    animation: scaleIn 0.2s ease-out;
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0.95);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Rest of the existing animations */
+@keyframes fadeInAddClub {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes sparkleAddClub {
+    0%, 100% {
+        transform: scale(1) translateY(0);
+        opacity: 0.8;
+    }
+    50% {
+        transform: scale(1.5) translateY(-10px);
+        opacity: 0.3;
+    }
+}
+
+/* Edit */
+#clubUpdateModal {
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    text-align: center;
+}
+
+.content_success_edit_club {
+    width: 350px;
+    background-color: white;
+    border-radius: 12px;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    animation: fadeInEditClub 0.3s ease-out;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Sparkle particles for edit modal */
+.sparkle000001, .sparkle000002, .sparkle000003, .sparkle000004,
+.sparkle000005, .sparkle000006, .sparkle000007, .sparkle000008 {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: gold;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: sparkleEditClub 1.5s infinite ease-in-out;
+    z-index: 1;
+}
+
+.sparkle000001 { top: 20px; left: 40px; animation-delay: 0s; }
+.sparkle000002 { top: 30px; right: 50px; animation-delay: 0.3s; }
+.sparkle000003 { bottom: 40px; left: 60px; animation-delay: 0.6s; }
+.sparkle000004 { bottom: 30px; right: 30px; animation-delay: 0.9s; }
+.sparkle000005 { top: 10px; right: 80px; animation-delay: 1.2s; }
+.sparkle000006 { bottom: 20px; left: 100px; animation-delay: 1.4s; }
+.sparkle000007 { bottom: 15px; left: 30px; animation-delay: 1.4s; }
+.sparkle000008 { bottom: 25px; left: 20px; animation-delay: 1.4s; }
+
+/* Checkmark icon style */
+#clubUpdateModal svg {
+    width: 70px;
+    height: 70px;
+    display: block;
+    filter: drop-shadow(0 4px 6px rgba(12, 119, 35, 0.5));
+    color: rgb(12, 119, 35);
+    z-index: 2;
+}
+
+/* Animation keyframes */
+@keyframes fadeInEditClub {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes sparkleEditClub{
+    0%, 100% {
+        transform: scale(1) translateY(0);
+        opacity: 0.8;
+    }
+    50% {
+        transform: scale(1.5) translateY(-10px);
+        opacity: 0.3;
+    }
 }

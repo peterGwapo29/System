@@ -51,7 +51,8 @@ Route::middleware('auth')->group(function () {
     //CLUB
     Route::get('/club', [ClubController::class, 'club'])->name('club');
     Route::get('/club/list', [ClubController::class, 'clubList'])->name('club.list');
-
+    Route::post('/club/insert', [ClubController::class, 'store'])->name('club.store');
+    Route::post('/club/update', [ClubController::class, 'update'])->name('club.update');
 
     Route::get('/event', [EventController::class, 'event'])->name('event');
 
