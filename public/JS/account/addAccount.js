@@ -60,7 +60,7 @@ document.getElementById('addAccountForm').addEventListener('submit', function (e
 
             setTimeout(() => {
                 successModal.classList.add('hidden');
-                location.reload();
+                $('#accountTable').DataTable().ajax.reload();
             }, 2000);
         } else {
             errorBox.textContent = data.message;

@@ -8,8 +8,7 @@ use App\Http\Controllers\MembershipController;
 use App\Http\Controllers\ClubController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\EventRegistrationController;
-use App\Http\Controllers\HistoryController;
-use App\Http\Controllers\CourseController;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -45,6 +44,9 @@ Route::middleware('auth')->group(function () {
     //MEMBERSIP
     Route::get('/membership', [MembershipController::class, 'membership'])->name('membership');
     Route::get('/membership/list', [MembershipController::class, 'membership_dataTables'])->name('membership_dataTables');
+    Route::post('/insertMembership', [MembershipController::class, 'insertMembership']);
+    // Route::post('/membership/update', [MembershipController::class, 'updateMembership'])->name('memberships.update');
+    Route::post('/membership/update', [MembershipController::class, 'update'])->name('membership.update');
 
 
     Route::get('/club', [ClubController::class, 'club'])->name('club');
@@ -55,8 +57,6 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/event_reg', [EventRegistrationController::class, 'event_reg'])->name('event_reg');
 
-    //history
-    Route::get('/history', [HistoryController::class, 'history_function'])->name('history');
     
 });
 

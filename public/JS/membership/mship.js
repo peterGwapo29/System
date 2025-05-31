@@ -13,28 +13,38 @@ new DataTable('#membershipTable', {
     serverSide: true,
     columnDefs: [
         {targets: '_all', visible: true},
-        {targets: [4], width: '42px',},
+        {targets: [5], width: '42px',},
     ],
     columns: [
         {
             data: 'membership_id',
             name: 'membership_id',
             title: 'Membership ID',
+            className: 'text-left'
         },
         {
             data: 'student_id',
             name: 'student_id',
             title: 'Student ID',
+            className: 'text-left'
         },
         {
-            data: 'club_id',
-            name: 'club_id',
-            title: 'Club ID',
+            data: 'membership_type',
+            name: 'membership_type',
+            title: 'Membership Type',
+            className: 'text-left'
+        },
+        {
+            data: 'club_name',
+            name: 'club_name',
+            title: 'Club Name',
+            className: 'text-left'
         },
         {
             data: 'status',
             name: 'status',
             title: 'Status',
+            className: 'text-left',
             render: function(data) {
                 if (data === 'Active') {
                     return `
@@ -56,6 +66,7 @@ new DataTable('#membershipTable', {
             data: null,
             title: 'Action',
             sortable: false,
+            className: 'text-left',
             render: function(row) {
                 if (row.status === 'Inactive') {
                     return `<span class="text-gray-400 italic">
@@ -76,8 +87,9 @@ new DataTable('#membershipTable', {
                             class="table-action editMshipModal" 
                             title="Edit Membership" 
                             data-membership_id="${row.membership_id}"
+                            data-membership_type="${row.membership_type}"
                             data-student_id="${row.student_id}"
-                            data-club_id="${row.club_id}"
+                            data-club_name="${row.club_name}"
                             data-status="${row.status}"
                         >
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">

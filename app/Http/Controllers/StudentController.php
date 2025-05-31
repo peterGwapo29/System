@@ -29,88 +29,50 @@ class StudentController extends Controller
         return DataTables::of($query)->make(true);
     }
 
-    // public function insertStudent(Request $request) {
-    //     $request->validate([
-    //         'first_name' => 'required',
-    //         'last_name' => 'required',
-    //         'middle_name' => 'required',
-    //         'course' => 'required',
-    //         'year_level' => 'required',
-    //     ]);
+    public function store(Request $request){
+        try {
+            // Retrieve input
+            $first_name = $request->input('first_name');
+            $last_name = $request->input('last_name');
+            $middle_name = $request->input('middle_name');
+            $course = $request->input('course');
+            $year_level = $request->input('year_level');
 
-    //     $exists = DB::table('students')
-    //         ->where('first_name', $request->input('first_name'))
-    //         ->where('middle_name', $request->input('middle_name'))
-    //         ->where('last_name', $request->input('last_name'))
-    //         ->exists();
+            // Optional: Check if the student already exists by some unique combination (e.g., first+last+middle)
+            $studentExists = DB::select("SELECT * FROM students WHERE first_name = ? AND last_name = ? AND middle_name = ?", [
+                $first_name,
+                $last_name,
+                $middle_name
+            ]);
 
-    //     if ($exists) {
-    //         return redirect()->back()->with('student_exists', true);
-    //     }
+            if (!empty($studentExists)) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Student already exists.'
+                ]);
+            }
 
-    //     // Insert new student if not exists
-    //     $query = DB::table('students')->insert([
-    //         'first_name' => $request->input('first_name'),
-    //         'last_name' => $request->input('last_name'),
-    //         'middle_name' => $request->input('middle_name'),
-    //         'course' => $request->input('course'),
-    //         'year_level' => $request->input('year_level'),
-    //         'status' => 'Active',
-    //     ]);
+            // Insert student
+            DB::insert("INSERT INTO students (first_name, last_name, middle_name, course, year_level, status) VALUES (?, ?, ?, ?, ?, ?)", [
+                $first_name,
+                $last_name,
+                $middle_name,
+                $course,
+                $year_level,
+                'Active'
+            ]);
 
-    //     if ($query) {
-    //         return back()->with('success', 'Student created successfully.');
-    //     } else {
-    //         return back()->with('fail', 'Something went wrong.');
-    //     }
-    // }
-
-
-    public function store(Request $request)
-{
-    try {
-        // Retrieve input
-        $first_name = $request->input('first_name');
-        $last_name = $request->input('last_name');
-        $middle_name = $request->input('middle_name');
-        $course = $request->input('course');
-        $year_level = $request->input('year_level');
-
-        // Optional: Check if the student already exists by some unique combination (e.g., first+last+middle)
-        $studentExists = DB::select("SELECT * FROM students WHERE first_name = ? AND last_name = ? AND middle_name = ?", [
-            $first_name,
-            $last_name,
-            $middle_name
-        ]);
-
-        if (!empty($studentExists)) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Student added successfully.'
+            ]);
+        } catch (\Exception $e) {
             return response()->json([
                 'success' => false,
-                'message' => 'Student already exists.'
-            ]);
+                'message' => 'Server error: ' . $e->getMessage()
+            ], 500);
         }
-
-        // Insert student
-        DB::insert("INSERT INTO students (first_name, last_name, middle_name, course, year_level, status) VALUES (?, ?, ?, ?, ?, ?)", [
-            $first_name,
-            $last_name,
-            $middle_name,
-            $course,
-            $year_level,
-            'Active'
-        ]);
-
-        return response()->json([
-            'success' => true,
-            'message' => 'Student added successfully.'
-        ]);
-    } catch (\Exception $e) {
-        return response()->json([
-            'success' => false,
-            'message' => 'Server error: ' . $e->getMessage()
-        ], 500);
     }
-}
 
 
     public function update(Request $request, $id){

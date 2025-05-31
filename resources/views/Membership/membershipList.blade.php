@@ -22,10 +22,8 @@
                 </select>
 
             </div>
-
                 <div class="p-6 text-gray-900 dark:text-gray-100 overflow-x-auto">
                     <table class="table-auto w-full border-collapse" id="membershipTable"></table>
-
                 </div>
             </div>
         </div>
@@ -58,22 +56,32 @@
 
                 <div class="mb-4">
                     <label for="membership_type" class="block text-sm font-medium text-gray-700 dark:text-gray-700">Membership Type</label>
-                    <input type="text" name="type" id="membership_type" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm px-3 py-3 bg-white text-gray-900 dark:text-gray-800" required>
+                    <select name="membership_type" id="membership_type"
+                        class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm px-3 py-3 bg-white text-gray-900 dark:text-gray-800 cursor-pointer"
+                        required
+                        size="1" onfocus="this.size=5" onblur="this.size=1" onchange="this.size=1">
+                        <option hidden selected></option>
+                        @foreach ($membershipTypes as $type)
+                            <option style="color: black;" value="{{ $type->type_name }}">{{ $type->type_name }}</option>
+                        @endforeach
+                    </select>
                     <span style="color: red">
-                        @error('type') {{ $message }} @enderror
+                        @error('membership_type') {{ $message }} @enderror
                     </span>
                 </div>
 
                 <div class="mb-4">
                     <label for="membership_clubName" class="block text-sm font-medium text-gray-700 dark:text-gray-700">Club Name</label>
-                    <select name="clubName" id="membership_clubName" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm px-3 py-3 bg-white text-gray-900 dark:text-gray-800 cursor-pointer" required>
+                    <select name="club_name" id="membership_clubName"
+                        class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm px-3 py-3 bg-white text-gray-900 dark:text-gray-800 cursor-pointer"
+                        required
+                        size="1" onfocus="this.size=5" onblur="this.size=1" onchange="this.size=1">
                         <option hidden selected></option>
-                        <option style="color: black;" value="Science Club">Science Club</option>
-                        <option style="color: black;" value="Math Society">Math Society</option>
-                        <option style="color: black;" value="IT Guild">IT Guild</option>
-                        <option style="color: black;" value="Debate Club">Debate Club</option>
-                        <option style="color: black;" value="Cultural Dance Troupe">Cultural Dance Troupe</option>
+                        @foreach ($clubName as $cname)
+                            <option style="color: black;" value="{{ $cname->club_name }}">{{ $cname->club_name }}</option>
+                        @endforeach
                     </select>
+
                     <span style="color: red">
                         @error('clubName') {{ $message }} @enderror
                     </span>
@@ -89,7 +97,142 @@
         </div>
     </div>
 
+    <!-- Edit Membership Modal -->
+    <div id="editMShipModal" class="modal hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="modal-content bg-white rounded-lg shadow-lg w-96 p-6 relative animate-scaleIn">
+            <h2 class="text-xl font-semibold mb-4">Update Membership <span id="mShip_membershipId"></span></h2>
+
+            <div id="mShip_errorBox" class="hidden mb-4 p-3 bg-red-100 text-red-700 border border-red-400 rounded"></div>
+            <form id="editMShipForm">
+                <div class="mb-3">
+                    <input type="hidden" id="mShip_membershipIdInput" name="membership_id" class="w-full border rounded px-3 py-2" readonly />
+                </div>
+
+                <div class="mb-3">
+                    <label for="mShip_studentId" class="block font-medium mb-1">Student ID</label>
+                    <input type="number" id="mShip_studentId" name="student_id" class="w-full border rounded px-3 py-2" required />
+                </div>
+
+                <div class="mb-3">
+                    <label for="mShip_membershipType" class="block font-medium mb-1">Membership Type</label>
+                    <select id="mShip_membershipType" name="membership_type" class="w-full border rounded px-3 py-2 cursor-pointer" required
+                        size="1" onfocus="this.size=5" onblur="this.size=1" onchange="this.size=1">
+                        <option hidden selected></option>
+                        @foreach ($membershipTypes as $type)
+                            <option value="{{ $type->type_name }}">{{ $type->type_name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="mShip_clubName" class="block font-medium mb-1">Club Name</label>
+                    <select id="mShip_clubName" name="club_name" class="w-full border rounded px-3 py-2 cursor-pointer" required
+                        size="1" onfocus="this.size=5" onblur="this.size=1" onchange="this.size=1">
+                        <option hidden selected></option>
+                        @foreach ($clubName as $cname)
+                            <option value="{{ $cname->club_name }}">{{ $cname->club_name }}</option>
+                        @endforeach
+                    </select>
+                </div>
 
 
+                <div class="flex justify-end gap-3">
+                    <button type="button" id="mShip_closeModalBtn">Cancel</button>
+                    <button type="submit" id="mShip_updateSubmit">Save</button>
+                </div>
+            </form>
+        </div>
+        
+    <!-- Edit Membership Modal -->
+    <div id="editMShipModal" class="modal hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="modal-content bg-white rounded-lg shadow-lg w-96 p-6 relative animate-scaleIn">
+            <h2 class="text-xl font-semibold mb-4">Update Membership <span id="mShip_membershipId"></span></h2>
+
+            <form id="editMShipForm">
+                <div class="mb-3">
+                    <input type="hidden" id="mShip_membershipIdInput" name="membership_id" class="w-full border rounded px-3 py-2" readonly />
+                </div>
+
+                <div class="mb-3">
+                    <label for="mShip_studentId" class="block font-medium mb-1">Student ID</label>
+                    <input type="text" id="mShip_studentId" name="student_id" class="w-full border rounded px-3 py-2" required />
+                </div>
+
+                <div class="mb-3">
+                    <label for="mShip_membershipType" class="block font-medium mb-1">Membership Type</label>
+                    <select id="mShip_membershipType" name="membership_type" class="w-full border rounded px-3 py-2 cursor-pointer" required
+                        size="1" onfocus="this.size=5" onblur="this.size=1" onchange="this.size=1">
+                        <option hidden selected></option>
+                        @foreach ($membershipTypes as $type)
+                            <option value="{{ $type->type_name }}">{{ $type->type_name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="mShip_clubName" class="block font-medium mb-1">Club Name</label>
+                    <select id="mShip_clubName" name="club_name" class="w-full border rounded px-3 py-2 cursor-pointer" required
+                        size="1" onfocus="this.size=5" onblur="this.size=1" onchange="this.size=1">
+                        <option hidden selected></option>
+                        @foreach ($clubName as $cname)
+                            <option value="{{ $cname->club_name }}">{{ $cname->club_name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
+
+                <div class="flex justify-end gap-3">
+                    <button type="button" id="mShip_closeModalBtn">Cancel</button>
+                    <button type="submit" id="mShip_updateSubmit">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add Membership success closeModal -->
+    <div id="addSuccessModalMship" class="hidden fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center">
+        <div class="content_success_add_mship">
+
+            <div class="sparkle m1"></div>
+            <div class="sparkle m2"></div>
+            <div class="sparkle m3"></div>
+            <div class="sparkle m4"></div>
+            <div class="sparkle m5"></div>
+            <div class="sparkle m6"></div>
+            <div class="sparkle m7"></div>
+            <div class="sparkle m8"></div>
+
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+            </svg>
+
+
+            <h2 class="text-lg font-semibold">Success</h2>
+            <p>Student successfully added!</p>
+        </div>
+    </div>
+
+    <!-- Edit Membership success closeModal -->
+    <div id="editSuccessModalMship" class="hidden fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center">
+        <div class="content_success_edit_mship">
+
+            <div class="sparkle m01"></div>
+            <div class="sparkle m02"></div>
+            <div class="sparkle m03"></div>
+            <div class="sparkle m04"></div>
+            <div class="sparkle m05"></div>
+            <div class="sparkle m06"></div>
+            <div class="sparkle m07"></div>
+            <div class="sparkle m08"></div>
+
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+            </svg>
+
+
+            <h2 class="text-lg font-semibold">Success</h2>
+            <p>Student successfully added!</p>
+        </div>
+    </div>
 
 </x-app-layout>

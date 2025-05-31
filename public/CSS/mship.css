@@ -86,3 +86,248 @@
 #submitMembershipBtn:hover{
     opacity: .9;
 }
+ #membershipTable thead th {
+    text-align: left;
+}
+#membershipTable tbody td {
+    text-align: left;
+}
+
+#membershipModal select[size] {
+  max-height: 150px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #3b82f6 #e5e7eb;
+}
+
+#membershipModal select[size]::-webkit-scrollbar {
+  width: 8px;
+}
+
+#membershipModal select[size]::-webkit-scrollbar-track {
+  background: #e5e7eb;
+  border-radius: 4px;
+}
+
+#membershipModal select[size]::-webkit-scrollbar-thumb {
+  background-color: #3b82f6;
+  border-radius: 4px;
+  border: 2px solid #e5e7eb;
+}
+
+#membershipModal select {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+#membershipModal select[size] option {
+  padding: 6px 10px;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: black;
+}
+
+/* ADD*/
+#addSuccessModalMship {
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    text-align: center;
+}
+
+.content_success_add_mship {
+    width: 350px;
+    background-color: white;
+    border-radius: 12px;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    animation: fadeInAdd 0.3s ease-out;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Sparkle particles for edit modal */
+.m1, .m2, .m3, .m4,
+.m5, .m6, .m7, .m8 {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: gold;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: sparkleAdd 1.5s infinite ease-in-out;
+    z-index: 1;
+}
+
+.m1 { top: 20px; left: 40px; animation-delay: 0s; }
+.m2 { top: 30px; right: 50px; animation-delay: 0.3s; }
+.m3 { bottom: 40px; left: 60px; animation-delay: 0.6s; }
+.m4 { bottom: 30px; right: 30px; animation-delay: 0.9s; }
+.m5 { top: 10px; right: 80px; animation-delay: 1.2s; }
+.m6 { bottom: 20px; left: 100px; animation-delay: 1.4s; }
+.m7 { bottom: 15px; left: 30px; animation-delay: 1.4s; }
+.m8 { bottom: 25px; left: 20px; animation-delay: 1.4s; }
+
+/* Checkmark icon style */
+#addSuccessModalMship svg {
+    width: 70px;
+    height: 70px;
+    display: block;
+    filter: drop-shadow(0 4px 6px rgba(12, 119, 35, 0.5));
+    color: rgb(12, 119, 35);
+    z-index: 2;
+}
+
+/* Animation keyframes */
+@keyframes fadeInAdd {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes sparkleAdd {
+    0%, 100% {
+        transform: scale(1) translateY(0);
+        opacity: 0.8;
+    }
+    50% {
+        transform: scale(1.5) translateY(-10px);
+        opacity: 0.3;
+    }
+}
+
+#editMShipModal{
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+}
+
+#mShip_updateSubmit {
+    background-color: #0d6efd;
+    color: rgb(249, 249, 249);
+    border-radius: 4px;
+    width: 100px;
+    padding: 4px;
+}
+#mShip_updateSubmit:hover{
+    opacity: .9;
+}
+
+#editMShipModal select[size] {
+  max-height: 150px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #3b82f6 #e5e7eb;
+}
+
+#editMShipModal select[size]::-webkit-scrollbar {
+  width: 8px;
+}
+
+#editMShipModal select[size]::-webkit-scrollbar-track {
+  background: #e5e7eb;
+  border-radius: 4px;
+}
+
+#editMShipModal select[size]::-webkit-scrollbar-thumb {
+  background-color: #3b82f6;
+  border-radius: 4px;
+  border: 2px solid #e5e7eb;
+}
+
+#editMShipModal select {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+#editMShipModal select[size] option {
+  padding: 6px 10px;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: black;
+}
+
+
+/* ADD*/
+#editSuccessModalMship {
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    text-align: center;
+}
+
+.content_success_edit_mship {
+    width: 350px;
+    background-color: white;
+    border-radius: 12px;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    animation: fadeInEdit 0.3s ease-out;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Sparkle particles for edit modal */
+.m01, .m02, .m03, .m04,
+.m05, .m06, .m07, .m08 {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: gold;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: sparkleEdit 1.5s infinite ease-in-out;
+    z-index: 1;
+}
+
+.m01 { top: 20px; left: 40px; animation-delay: 0s; }
+.m02 { top: 30px; right: 50px; animation-delay: 0.3s; }
+.m03 { bottom: 40px; left: 60px; animation-delay: 0.6s; }
+.m04 { bottom: 30px; right: 30px; animation-delay: 0.9s; }
+.m05 { top: 10px; right: 80px; animation-delay: 1.2s; }
+.m06 { bottom: 20px; left: 100px; animation-delay: 1.4s; }
+.m07 { bottom: 15px; left: 30px; animation-delay: 1.4s; }
+.m08 { bottom: 25px; left: 20px; animation-delay: 1.4s; }
+
+/* Checkmark icon style */
+#editSuccessModalMship svg {
+    width: 70px;
+    height: 70px;
+    display: block;
+    filter: drop-shadow(0 4px 6px rgba(12, 119, 35, 0.5));
+    color: rgb(12, 119, 35);
+    z-index: 2;
+}
+
+/* Animation keyframes */
+@keyframes fadeInEdit {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes sparkleEdit {
+    0%, 100% {
+        transform: scale(1) translateY(0);
+        opacity: 0.8;
+    }
+    50% {
+        transform: scale(1.5) translateY(-10px);
+        opacity: 0.3;
+    }
+}

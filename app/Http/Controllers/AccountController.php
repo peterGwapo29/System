@@ -30,63 +30,63 @@ class AccountController extends Controller
 
 
    public function store(Request $request){
-    try {
-        $student_id = $request->input('student_id');
-        $username = $request->input('username');
-        $password = $request->input('password');
-        $email = $request->input('email');
+        try {
+            $student_id = $request->input('student_id');
+            $username = $request->input('username');
+            $password = $request->input('password');
+            $email = $request->input('email');
 
-        $studentExists = DB::select("SELECT * FROM students WHERE student_id = ?", [$student_id]);
-        if (empty($studentExists)) {
-            return response()->json([
-                'success' => false, 
-                'message' => 'Student ID not found.'
+            $studentExists = DB::select("SELECT * FROM students WHERE student_id = ?", [$student_id]);
+            if (empty($studentExists)) {
+                return response()->json([
+                    'success' => false, 
+                    'message' => 'Student ID not found.'
+                ]);
+            }
+
+            $accountExists = DB::select("SELECT * FROM student_account WHERE student_id = ?", [$student_id]);
+            if (!empty($accountExists)) {
+                return response()->json([
+                    'success' => false, 
+                    'message' => 'Student already has an account.'
+                ]);
+            }
+
+            $usernameExist = DB::select("SELECT * FROM student_account WHERE username = ?", [$username]);
+            if (!empty($usernameExist)) {
+                return response()->json([
+                    'success' => false, 
+                    'message' => 'This username is already taken, Please try again.'
+                ]);
+            }
+
+            $emailExist = DB::select("SELECT * FROM student_account WHERE email = ?", [$email]);
+            if (!empty($emailExist)) {
+                return response()->json([
+                    'success' => false, 
+                    'message' => 'This email is already taken, Please try again.'
+                ]);
+            }
+            
+
+            DB::insert("INSERT INTO student_account (student_id, username, password, email, created_at, account_status) VALUES (?, ?, ?, ?, ?, ?)", [
+                $student_id,
+                $username,
+                Hash::make($password),
+                $email,
+                now(),
+                'Active'
             ]);
-        }
 
-        $accountExists = DB::select("SELECT * FROM student_account WHERE student_id = ?", [$student_id]);
-        if (!empty($accountExists)) {
+            return response()->json(['success' => true]);
+
+        } catch (\Exception $e) {
             return response()->json([
-                'success' => false, 
-                'message' => 'Student already has an account.'
-            ]);
+                'success' => false,
+                'message' => 'Server error: ' . $e->getMessage()
+            ], 500);
         }
-
-        $usernameExist = DB::select("SELECT * FROM student_account WHERE username = ?", [$username]);
-        if (!empty($usernameExist)) {
-            return response()->json([
-                'success' => false, 
-                'message' => 'This username is already taken, Please try again.'
-            ]);
-        }
-
-        $emailExist = DB::select("SELECT * FROM student_account WHERE email = ?", [$email]);
-        if (!empty($emailExist)) {
-            return response()->json([
-                'success' => false, 
-                'message' => 'This email is already taken, Please try again.'
-            ]);
-        }
-        
-
-        DB::insert("INSERT INTO student_account (student_id, username, password, email, created_at, account_status) VALUES (?, ?, ?, ?, ?, ?)", [
-            $student_id,
-            $username,
-            Hash::make($password),
-            $email,
-            now(),
-            'Active'
-        ]);
-
-        return response()->json(['success' => true]);
-
-    } catch (\Exception $e) {
-        return response()->json([
-            'success' => false,
-            'message' => 'Server error: ' . $e->getMessage()
-        ], 500);
     }
-}
 
     public function update_account(Request $request){
         $request->validate([
