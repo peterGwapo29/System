@@ -1,0 +1,34 @@
+#addClubutton{
+    background-color: rgb(39, 155, 7);
+}
+#addClubutton:hover{
+    opacity: 0.9;
+}
+#filterStatusClub{
+    color: white;
+    width: 108px;
+    margin-left: 12px;
+    background-color: #1f2937;
+}
+
+.status-badge-club{
+    display: inline-flex;
+    align-items: center;
+    font-weight: 600;
+    font-size: 0.9rem;
+    gap: 6px;
+}
+.status-circle-club{
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+.active-status-club .status-circle-club {
+    background-color: #22c55e;
+}
+
+.inactive-status-club .status-circle-club {
+    background-color: #6b7280;
+    opacity: 0.7;
+}

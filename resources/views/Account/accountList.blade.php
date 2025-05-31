@@ -142,7 +142,7 @@
             <p class="text-gray-800 mb-1">
                 You're about to inactive this account.
             </p>
-            <span class="second_message block text-sm text-gray-800 mb-5">This action cannot be undone.</span>
+            <span class="second_message block text-sm text-gray-800 mb-5">This action can be undone later by restoring the account.</span>
 
             <div class="flex justify-center gap-4">
                 <button id="confirmDeleteBtn" class="bg-red-600 text-white px-4 py-2 hover:bg-red-700 transition">Delete</button>

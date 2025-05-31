@@ -98,14 +98,6 @@ class MembershipController extends Controller {
             ->where('membership_id', '<>', $validated['membership_id'])
             ->exists();
 
-        if ($membershipExists) {
-            return response()->json([
-                'success' => false,
-                'message' => 'This student already has a membership.',
-                'errorField' => 'student_id'
-            ]);
-        }
-
         $affected = DB::table('memberships')
             ->where('membership_id', $validated['membership_id'])
             ->update([
@@ -118,6 +110,56 @@ class MembershipController extends Controller {
             return response()->json(['success' => true, 'message' => 'Membership updated successfully.']);
         } else {
             return response()->json(['success' => false, 'message' => 'Membership update was unsuccessful, Please try again.']);
+        }
+    }
+
+    public function delete($id) {
+        try {
+            $affected = DB::table('memberships')
+                ->where('membership_id', $id)
+                ->update(['status' => 'Inactive']);
+
+            if ($affected) {
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Membership successfully deactivated.'
+                ]);
+            } else {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Membership not found or already inactive.'
+                ]);
+            }
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Error deactivating membership: ' . $e->getMessage()
+            ]);
+        }
+    }
+
+    public function restore($id) {
+        try {
+            $affected = DB::table('memberships')
+                ->where('membership_id', $id)
+                ->update(['status' => 'Active']);
+
+            if ($affected) {
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Membership successfully restored.'
+                ]);
+            } else {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Membership not found or already active.'
+                ]);
+            }
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Error restoring membership: ' . $e->getMessage()
+            ]);
         }
     }
 

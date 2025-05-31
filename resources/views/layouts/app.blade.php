@@ -56,6 +56,6 @@
         <script src="{{asset('JS/account/custom.js')}}"></script>
         <script src="{{asset('JS/student/student.js')}}"></script>
         <script src="{{asset('JS/membership/mship.js')}}"></script>
-
+        <script src="{{asset('JS/club/viewClub.js')}}"></script>
     </body>
 </html>

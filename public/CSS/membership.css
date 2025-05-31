@@ -1,0 +1,142 @@
+#membershipDLTConfirmModal{
+    backdrop-filter: blur(6px);
+    background-color: rgba(0, 0, 0, 0.4);
+    -webkit-backdrop-filter: blur(6px);
+}
+
+#membershipDLTConfirmModal span, p{
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+#membershipDLT_icon{
+    height: 50px;
+    display: block;
+    filter: drop-shadow(0 4px 6px rgba(220, 38, 38, 0.5));
+}
+
+#membershipDLTConfirmBtn{
+    border-radius: 4px;
+}
+
+#membershipDLTConfirmBtn:hover{
+    opacity: .9;
+}
+
+#membershipDLTCancelBtn{
+    color: rgb(12, 12, 12);
+    border-radius: 4px;
+}
+
+#membershipDLTCancelBtn:hover{
+    opacity: .9;
+}
+
+.membershipDLT-background{
+    width: 500px;
+    height: auto;
+    border-radius: 14px;
+}
+
+.deleteMshipBtn{
+    color: rgb(175, 20, 20);
+}
+
+.deleteMshipBtn:hover{
+    opacity: .8;
+}
+
+#membershipDeleteModal{
+    text-align: center;
+    backdrop-filter: blur(6px);
+    background-color: rgba(0, 0, 0, 0.4);
+    -webkit-backdrop-filter: blur(6px);
+}
+
+#deleteMod{
+    border-radius: 10px;
+    width: 400px;
+}
+
+#delete_success_icon{
+    height: 50px;
+    display: block;
+    filter: drop-shadow(0 4px 6px rgba(12, 119, 35, 0.5));
+    color: rgb(12, 119, 35);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Delete Success Modal Styles */
+.content_success_delete {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    position: relative;
+    width: 300px;
+    animation: scaleIn 0.3s ease-out;
+}
+
+.content_success_delete svg {
+    width: 50px;
+    height: 50px;
+    margin: 10px auto;
+    color: #10B981;
+}
+
+.content_success_delete h2 {
+    color: #374151;
+    margin-bottom: 8px;
+}
+
+.content_success_delete p {
+    color: #6B7280;
+    margin-bottom: 0;
+}
+
+/* Sparkle Animation */
+.sparkle {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #10B981;
+    animation: sparkleAnimation 2s linear infinite;
+}
+
+/* Sparkle Positions for Delete Modal */
+.m1 { top: -20px; left: 50%; animation-delay: 0s; }
+.m2 { top: 50%; right: -20px; animation-delay: 0.25s; }
+.m3 { bottom: -20px; left: 50%; animation-delay: 0.5s; }
+.m4 { top: 50%; left: -20px; animation-delay: 0.75s; }
+.m5 { top: -20px; right: 30%; animation-delay: 1s; }
+.m6 { bottom: -20px; right: 30%; animation-delay: 1.25s; }
+.m7 { right: -20px; top: 30%; animation-delay: 1.5s; }
+.m8 { left: -20px; bottom: 30%; animation-delay: 1.75s; }
+
+@keyframes sparkleAnimation {
+    0% {
+        transform: scale(0) rotate(0deg);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1) rotate(180deg);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0.95);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+} 

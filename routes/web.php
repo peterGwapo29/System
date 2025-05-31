@@ -26,7 +26,6 @@ Route::middleware('auth')->group(function () {
     // ACCOUNT
     Route::get('/account', [AccountController::class, 'account'])->name('account');
     Route::post('/account', [AccountController::class, 'store'])->name('accounts.store');
-    // Route::post('/insert', [AccountController::class, 'insert']);
     Route::post('/accounts/insert', [AccountController::class, 'store']);
     Route::get('/studentAccount/list', [AccountController::class, 'studentAcc_dataTables'])->name('studentAcc_dataTables');
     Route::post('/account/update', [AccountController::class, 'update_account']);
@@ -45,11 +44,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/membership', [MembershipController::class, 'membership'])->name('membership');
     Route::get('/membership/list', [MembershipController::class, 'membership_dataTables'])->name('membership_dataTables');
     Route::post('/insertMembership', [MembershipController::class, 'insertMembership']);
-    // Route::post('/membership/update', [MembershipController::class, 'updateMembership'])->name('memberships.update');
     Route::post('/membership/update', [MembershipController::class, 'update'])->name('membership.update');
+    Route::post('/membership/delete/{id}', [MembershipController::class, 'delete'])->name('membership.delete');
+    Route::post('/membership/restore/{id}', [MembershipController::class, 'restore'])->name('membership.restore');
 
-
+    //CLUB
     Route::get('/club', [ClubController::class, 'club'])->name('club');
+    Route::get('/club/list', [ClubController::class, 'clubList'])->name('club.list');
 
 
     Route::get('/event', [EventController::class, 'event'])->name('event');

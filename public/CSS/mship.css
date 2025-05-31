@@ -11,12 +11,7 @@
 #addMembershipButton:hover{
     opacity: .9;
 }
-#filterStatusMembership{
-    color: white;
-    width: 108px;
-    margin-left: 12px;
-    background-color: #1f2937;
-}
+
 .status-badge-membership{
     display: inline-flex;
     align-items: center;

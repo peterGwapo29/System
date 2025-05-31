@@ -222,7 +222,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round"
                         d="M4.5 12.75l6 6 9-13.5" />
                 </svg>
-                <h2 class="modalTitleDelete">Student Deleted Successfully</h2>
+                <h2 class="modalTitleDelete">Student Deactivated Successfully</h2>
                 <p class="modalMessageDelete">The student record has been updated.</p>
             </div>
         </div>

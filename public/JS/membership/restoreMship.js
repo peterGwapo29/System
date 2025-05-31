@@ -1,57 +1,58 @@
 $(document).ready(function() {
-    let membershipIdToDelete = null;
+    let membershipIdToRestore = null;
 
     // Debug log to confirm script is loaded
-    console.log('Delete membership script initialized');
+    console.log('Restore membership script initialized');
 
-    // Handle delete membership button click with improved event delegation
-    $(document).on('click', '.deleteMshipBtn', function(e) {
+    // Handle restore membership button click
+    $(document).on('click', '.restoreMembershipBtn', function(e) {
         e.preventDefault();
         e.stopPropagation();
         
-        membershipIdToDelete = $(this).data('membership_id');
-        console.log('Delete button clicked for membership:', membershipIdToDelete);
+        membershipIdToRestore = $(this).data('membership_id');
+        console.log('Restore button clicked for membership:', membershipIdToRestore);
         
         // Show the confirmation modal
-        const confirmModal = $('#membershipDLTConfirmModal');
+        const confirmModal = $('#restoreConfirmModal');
         confirmModal.removeClass('hidden');
         confirmModal.css('display', 'flex');
     });
 
     // Handle cancel button in confirmation modal
-    $('#membershipDLTCancelBtn').on('click', function(e) {
+    $('#cancelRestoreBtn').on('click', function(e) {
         e.preventDefault();
-        const confirmModal = $('#membershipDLTConfirmModal');
+        const confirmModal = $('#restoreConfirmModal');
         confirmModal.addClass('hidden');
         confirmModal.css('display', 'none');
-        membershipIdToDelete = null;
+        membershipIdToRestore = null;
     });
-
-    const deleteBtnMship =document.getElementById('membershipDLTConfirmBtn');
+    const restoreButtonChange = document.getElementById('confirmRestoreBtn');
     // Handle confirm button in confirmation modal
-    $('#membershipDLTConfirmBtn').on('click', function(e) {
+    $('#confirmRestoreBtn').on('click', function(e) {
         e.preventDefault();
-        console.log('Confirm delete clicked for membership:', membershipIdToDelete);
-        deleteBtnMship.textContent = 'Deleting...';
+        console.log('Confirm restore clicked for membership:', membershipIdToRestore);
         
-        if (membershipIdToDelete) {
+        restoreButtonChange.textContent = 'Restoring...';
+
+        
+        if (membershipIdToRestore) {
             // Send AJAX request to update status
             $.ajax({
-                url: baseURL() + 'membership/delete/' + membershipIdToDelete,
+                url: baseURL() + 'membership/restore/' + membershipIdToRestore,
                 type: 'POST',
                 data: {
                     _token: $('meta[name="csrf-token"]').attr('content')
                 },
                 success: function(response) {
-                    console.log('Delete response:', response);
+                    console.log('Restore response:', response);
                     if (response.success) {
                         // Hide confirmation modal
-                        const confirmModal = $('#membershipDLTConfirmModal');
+                        const confirmModal = $('#restoreConfirmModal');
                         confirmModal.addClass('hidden');
                         confirmModal.css('display', 'none');
                         
                         // Show success modal
-                        const successModal = $('#membershipDeleteModal');
+                        const successModal = $('#restoreSuccessModal');
                         successModal.removeClass('hidden');
                         successModal.css('display', 'flex');
                         
@@ -59,20 +60,20 @@ $(document).ready(function() {
                         setTimeout(function() {
                             successModal.addClass('hidden');
                             successModal.css('display', 'none');
-                            deleteBtnMship.textContent = 'Delete';
+                            restoreButtonChange.textContent = 'Restore';
                         }, 2000);
                         
                         // Refresh the membership table
                         $('#membershipTable').DataTable().ajax.reload();
                     } else {
-                        alert('Failed to deactivate membership: ' + response.message);
-                        deleteBtnMship.textContent = 'Delete';
+                        alert('Failed to restore membership: ' + response.message);
+                        restoreButtonChange.textContent = 'Restore';
                     }
                 },
                 error: function(xhr, status, error) {
-                    console.error('Delete request failed:', error);
+                    console.error('Restore request failed:', error);
                     alert('Something went wrong while processing your request.');
-                    deleteBtnMship.textContent = 'Delete';
+                    restoreButtonChange.textContent = 'Restore';
                 }
             });
         }
@@ -83,7 +84,7 @@ $(document).ready(function() {
         if (e.target === this) {
             $(this).addClass('hidden');
             $(this).css('display', 'none');
-            membershipIdToDelete = null;
+            membershipIdToRestore = null;
         }
     });
 });
