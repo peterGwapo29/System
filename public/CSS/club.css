@@ -413,3 +413,85 @@
     justify-content: center;
     gap: 8px;
 }
+
+/* restore */
+#deleteSuccessModalClub {
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    text-align: center;
+}
+
+#restoreSuccessModalClub{
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+}
+
+.content_success_restore_club {
+    width: 350px;
+    background-color: white;
+    border-radius: 12px;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    animation: fadeInDeleteClub 0.3s ease-out;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Sparkle particles for edit modal */
+.sparkle00000001, .sparkle00000002, .sparkle00000003, .sparkle00000004,
+.sparkle00000005, .sparkle00000006, .sparkle00000007, .sparkle00000008 {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: gold;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: sparkleDeleteClub 1.5s infinite ease-in-out;
+    z-index: 1;
+}
+
+.sparkle00000001 { top: 20px; left: 40px; animation-delay: 0s; }
+.sparkle00000002 { top: 30px; right: 50px; animation-delay: 0.3s; }
+.sparkle00000003 { bottom: 40px; left: 60px; animation-delay: 0.6s; }
+.sparkle00000004 { bottom: 30px; right: 30px; animation-delay: 0.9s; }
+.sparkle00000005 { top: 10px; right: 80px; animation-delay: 1.2s; }
+.sparkle00000006 { bottom: 20px; left: 100px; animation-delay: 1.4s; }
+.sparkle00000007 { bottom: 15px; left: 30px; animation-delay: 1.4s; }
+.sparkle00000008 { bottom: 25px; left: 20px; animation-delay: 1.4s; }
+
+/* Checkmark icon style */
+#restoreSuccessModalClub svg {
+    width: 70px;
+    height: 70px;
+    display: block;
+    filter: drop-shadow(0 4px 6px rgba(12, 119, 35, 0.5));
+    color: rgb(12, 119, 35);
+    z-index: 2;
+}
+
+/* Animation keyframes */
+@keyframes fadeInDeleteClub {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes sparkleDeleteClub{
+    0%, 100% {
+        transform: scale(1) translateY(0);
+        opacity: 0.8;
+    }
+    50% {
+        transform: scale(1.5) translateY(-10px);
+        opacity: 0.3;
+    }
+}

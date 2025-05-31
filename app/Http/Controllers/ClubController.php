@@ -120,5 +120,32 @@ class ClubController extends Controller
         }
     }
 
+    public function restoreClub(Request $request) {
+        $id = $request->input('club_id');
+        
+        try {
+            $updated = DB::table('clubs')
+                ->where('club_id', $id)
+                ->update(['status' => 'Active']);
 
+            if ($updated) {
+                return response()->json([
+                    'status' => 'success',
+                    'message' => 'Club restored successfully'
+                ]);
+            }
+
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Club not found or already active'
+            ], 404);
+
+        } catch (\Exception $e) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Failed to restore club',
+                'error' => $e->getMessage()
+            ], 500);
+        }
+    }
 }

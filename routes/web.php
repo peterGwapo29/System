@@ -54,6 +54,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/club/insert', [ClubController::class, 'store'])->name('club.store');
     Route::post('/club/update', [ClubController::class, 'update'])->name('club.update');
     Route::post('/club/delete', [ClubController::class, 'deleteClub'])->name('club.deleteClub');
+    Route::post('/club/restore', [ClubController::class, 'restoreClub'])->name('club.restore');
 
     
     //Event
