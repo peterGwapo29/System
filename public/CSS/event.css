@@ -1,0 +1,507 @@
+#filterStatus{
+    color: white;
+    width: 108px;
+    margin-left: 12px;
+    background-color: #1f2937;
+}
+.status-badge-event {
+    display: inline-flex;
+    align-items: center;
+    font-weight: 600;
+    font-size: 0.9rem;
+    gap: 6px;
+}
+
+.status-circle-event {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.active-status-event .status-circle-event {
+    background-color: #22c55e;
+}
+
+.inactive-status-event .status-circle-event {
+    background-color: #6b7280;
+    opacity: 0.7;
+}
+.editEventModalBtn{
+    color: #0D6EFD;
+}
+.deleteEventBtn{
+    color: #AF1414;
+}
+#table-action svg{
+    height: 18px;
+}
+.editEventModalBtn:hover{
+    opacity: .8;
+}
+.deleteEventBtn:hover{
+    opacity: .8;
+}
+#dt-length-0{
+    color: #ffffff;
+}
+
+#eventDLTConfirmModal {
+    backdrop-filter: blur(6px);
+    background-color: rgba(0, 0, 0, 0.4);
+    -webkit-backdrop-filter: blur(6px);
+}
+
+#eventDLTConfirmModal span, p {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+#eventDLT_icon {
+    height: 50px;
+    display: block;
+    filter: drop-shadow(0 4px 6px rgba(220, 38, 38, 0.5));
+}
+
+#eventDLTConfirmBtn {
+    border-radius: 4px;
+}
+
+#eventDLTConfirmBtn:hover {
+    opacity: .9;
+}
+
+#eventDLTCancelBtn {
+    background-color: #858686;
+    color: rgb(249, 249, 249);
+    border-radius: 4px;
+}
+
+#eventDLTCancelBtn:hover {
+    opacity: .9;
+}
+
+.eventDLT-background {
+    width: 500px;
+    height: auto;
+    border-radius: 14px;
+}
+
+#deleteSuccessModalEvent {
+    text-align: center;
+    backdrop-filter: blur(6px);
+    background-color: rgba(0, 0, 0, 0.4);
+    -webkit-backdrop-filter: blur(6px);
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.animate-scaleIn {
+    animation: scaleIn 0.3s ease-in-out;
+}
+
+#restoreIconEvent {
+    cursor: pointer;
+    height: 18px;
+    display: block;
+    color: #28a745;
+}
+
+#restoreIconEvent:hover {
+    opacity: .8;
+}
+
+#restoreEventModal {
+    backdrop-filter: blur(6px);
+    background-color: rgba(0, 0, 0, 0.6);
+    -webkit-backdrop-filter: blur(6px);
+    text-align: center;
+}
+
+.eventRestore-message{
+    margin-bottom: 8px;
+}
+
+.restoreEventBtn {
+    color: #28a745;
+}
+
+.restoreEventBtn:hover {
+    opacity: .8;
+}
+
+#restoreSuccessModalEvent {
+    text-align: center;
+    backdrop-filter: blur(6px);
+    background-color: rgba(0, 0, 0, 0.4);
+    -webkit-backdrop-filter: blur(6px);
+}
+
+#confirmRestoreBtn:hover {
+    opacity: .9;
+}
+
+#closeRestoreEventModal:hover {
+    opacity: .9;
+}
+
+.background_restore_event {
+    background-color: white;
+    width: 500px;
+    height: auto;
+    border-radius: 14px;
+}
+
+#restoreEventIcon {
+    height: 50px;
+    display: block;
+    filter: drop-shadow(0 4px 6px rgba(34, 197, 94, 0.5));
+}
+
+#confirmRestoreBtn {
+    border-radius: 4px;
+}
+
+#confirmRestoreBtn:hover {
+    opacity: .9;
+}
+
+#closeRestoreEventModal {
+    background-color: #858686;
+    color: rgb(249, 249, 249);
+    border-radius: 4px;
+}
+
+#closeRestoreEventModal:hover {
+    opacity: .9;
+}
+
+.restoreEventBtn {
+    color: #28a745;
+}
+
+.restoreEventBtn:hover {
+    opacity: .8;
+}
+
+#restoreSuccessModalEvent {
+    text-align: center;
+    backdrop-filter: blur(6px);
+    background-color: rgba(0, 0, 0, 0.4);
+    -webkit-backdrop-filter: blur(6px);
+}
+
+.modalContentRestore {
+    background: white;
+    max-width: 500px;
+    width: 90%;
+    padding: 24px 32px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    text-align: center;
+}
+
+.backgroundModalMembership{
+    width: 1000px;
+}
+
+.updateEventBtn{
+    background-color: rgb(39, 155, 7);
+}
+.updateEventBtn:hover{
+    opacity: .9;
+}
+
+#editEventModal {
+    backdrop-filter: blur(8px);
+}
+
+#editEventModal .relative {
+    animation: modalFadeIn 0.3s ease-out;
+}
+
+#editEventModal input,
+#editEventModal textarea {
+    font-size: 16px;
+    transition: all 0.2s ease;
+}
+
+#editEventModal input:focus,
+#editEventModal textarea:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+    outline: none;
+}
+
+#editEventModal label {
+    color: #374151;
+    font-weight: 500;
+}
+
+#editEventModal .updateEventBtn {
+    background-color: #2563eb;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+#editEventModal .updateEventBtn:hover {
+    background-color: #1d4ed8;
+    transform: translateY(-1px);
+}
+
+#closeEditEventModalBtn {
+    transition: all 0.2s ease;
+}
+
+#closeEditEventModalBtn:hover {
+    background-color: #f3f4f6;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+#eventModal{
+    backdrop-filter: blur(6px);
+    background-color: rgba(0, 0, 0, 0.4);
+    -webkit-backdrop-filter: blur(6px);
+}
+
+#closeEditEventModalBtn:hover {
+    background-color: #f3f4f6;
+}
+
+#updateEventSubmit {
+    background-color: #2563eb;
+}
+
+#updateEventSubmit:hover {
+    background-color: #1d4ed8;
+}
+
+#editSuccessModalEvent {
+    text-align: center;
+    backdrop-filter: blur(6px);
+    background-color: rgba(0, 0, 0, 0.4);
+    -webkit-backdrop-filter: blur(6px);
+}
+
+.modalContentEdit {
+    background: white;
+    max-width: 500px;
+    width: 90%;
+    padding: 24px 32px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    text-align: center;
+}
+
+#addEventButton{
+    background-color: rgb(39, 155, 7);
+}
+/* #closeEventModal{
+    margin-left: -100px;
+} */
+.icon-close{
+    margin-left: -42px;
+}
+.icon-close:hover{
+    color: #ff0000;
+}
+#addEventSubmit{
+    background-color: rgb(39, 155, 7);
+    font-weight: normal;
+}
+#addEventSubmit:hover{
+    opacity: .9;
+}
+
+/* Edit */
+#clubUpdateModal {
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    text-align: center;
+}
+
+.content_success_edit_club {
+    width: 350px;
+    background-color: white;
+    border-radius: 12px;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    animation: fadeInEditClub 0.3s ease-out;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Sparkle particles for edit modal */
+.sparkle000001, .sparkle000002, .sparkle000003, .sparkle000004,
+.sparkle000005, .sparkle000006, .sparkle000007, .sparkle000008 {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: gold;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: sparkleEditClub 1.5s infinite ease-in-out;
+    z-index: 1;
+}
+
+.sparkle000001 { top: 20px; left: 40px; animation-delay: 0s; }
+.sparkle000002 { top: 30px; right: 50px; animation-delay: 0.3s; }
+.sparkle000003 { bottom: 40px; left: 60px; animation-delay: 0.6s; }
+.sparkle000004 { bottom: 30px; right: 30px; animation-delay: 0.9s; }
+.sparkle000005 { top: 10px; right: 80px; animation-delay: 1.2s; }
+.sparkle000006 { bottom: 20px; left: 100px; animation-delay: 1.4s; }
+.sparkle000007 { bottom: 15px; left: 30px; animation-delay: 1.4s; }
+.sparkle000008 { bottom: 25px; left: 20px; animation-delay: 1.4s; }
+
+/* Checkmark icon style */
+#clubUpdateModal svg {
+    width: 70px;
+    height: 70px;
+    display: block;
+    filter: drop-shadow(0 4px 6px rgba(12, 119, 35, 0.5));
+    color: rgb(12, 119, 35);
+    z-index: 2;
+}
+
+/* Animation keyframes */
+@keyframes fadeInEditClub {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes sparkleEditClub{
+    0%, 100% {
+        transform: scale(1) translateY(0);
+        opacity: 0.8;
+    }
+    50% {
+        transform: scale(1.5) translateY(-10px);
+        opacity: 0.3;
+    }
+}
+
+/* Success Modal Styles */
+.content_success_add_event,
+.content_success_edit_event,
+.content_success_delete_event,
+.content_success_restore_event {
+    width: 350px;
+    background-color: white;
+    border-radius: 12px;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    animation: fadeInSuccess 0.3s ease-out;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Sparkle particles */
+.sparkle {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: gold;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: sparkleAnimation 1.5s infinite ease-in-out;
+    z-index: 1;
+}
+
+.sparkle000001 { top: 20px; left: 40px; animation-delay: 0s; }
+.sparkle000002 { top: 30px; right: 50px; animation-delay: 0.3s; }
+.sparkle000003 { bottom: 40px; left: 60px; animation-delay: 0.6s; }
+.sparkle000004 { bottom: 30px; right: 30px; animation-delay: 0.9s; }
+.sparkle000005 { top: 10px; right: 80px; animation-delay: 1.2s; }
+.sparkle000006 { bottom: 20px; left: 100px; animation-delay: 1.4s; }
+.sparkle000007 { bottom: 15px; left: 30px; animation-delay: 1.4s; }
+.sparkle000008 { bottom: 25px; left: 20px; animation-delay: 1.4s; }
+
+/* Success modal icons */
+.content_success_add_event svg,
+.content_success_edit_event svg,
+.content_success_delete_event svg,
+.content_success_restore_event svg {
+    width: 70px;
+    height: 70px;
+    display: block;
+    filter: drop-shadow(0 4px 6px rgba(12, 119, 35, 0.5));
+    color: rgb(12, 119, 35);
+    z-index: 2;
+}
+
+/* Animation keyframes */
+@keyframes fadeInSuccess {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes sparkleAnimation {
+    0%, 100% {
+        transform: scale(1) translateY(0);
+        opacity: 0.8;
+    }
+    50% {
+        transform: scale(1.5) translateY(-10px);
+        opacity: 0.3;
+    }
+}
+
+/* Success modal text styles */
+.content_success_add_event h2,
+.content_success_edit_event h2,
+.content_success_delete_event h2,
+.content_success_restore_event h2 {
+    color: rgb(12, 119, 35);
+    margin: 0;
+}
+
+.content_success_add_event p,
+.content_success_edit_event p,
+.content_success_delete_event p,
+.content_success_restore_event p {
+    color: #666;
+    margin: 0;
+}
+
+#editEventModal input{
+    font-size: 16px;
+}

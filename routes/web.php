@@ -59,10 +59,15 @@ Route::middleware('auth')->group(function () {
     
     //Event
     Route::get('/event', [EventController::class, 'event'])->name('event');
+    Route::get('/event/list', [EventController::class, 'eventList'])->name('eventList');
+    Route::post('/insertEvent', [EventController::class, 'store'])->name('event.store');
+    Route::post('/event/update', [EventController::class, 'update'])->name('event.update');
+    Route::post('/event/delete', [EventController::class, 'deleteEvent'])->name('event.delete');
+    Route::post('/event/restore', [EventController::class, 'restoreEvent'])->name('event.restore');
 
 
     Route::get('/event_reg', [EventRegistrationController::class, 'event_reg'])->name('event_reg');
-
+    
     
 });
 
