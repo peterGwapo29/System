@@ -67,7 +67,11 @@ Route::middleware('auth')->group(function () {
 
 
     Route::get('/event_reg', [EventRegistrationController::class, 'event_reg'])->name('event_reg');
-    
+    Route::get('/event_registration/list', [EventRegistrationController::class, 'event_regList'])->name('event_regList');
+    Route::post('/update-registration-status', [EventRegistrationController::class, 'updateStatus'])->name('updateStatus');
+    Route::get('/active-events', [EventRegistrationController::class, 'getActiveEvents'])->name('getActiveEvents');
+    Route::get('/available-students', [EventRegistrationController::class, 'getAvailableStudents'])->name('getAvailableStudents');
+    Route::post('/register-event', [EventRegistrationController::class, 'registerEvent'])->name('registerEvent');
     
 });
 

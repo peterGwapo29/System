@@ -45,12 +45,18 @@
 #closeModalClub, #closeEditClubModalBtn {
     margin-right: 24px;
 }
+#closeModalClub:hover{
+    color: #ff0000;
+}
 #closeModalClub:hover, #closeEditClubModalBtn:hover {
     opacity: .9;
 }
 #insertClub, #updateClubSubmit {
-    background-color: #0d6efd;
+    background-color: rgb(39, 155, 7);
     font-weight: normal;
+}
+#insertClub:hover{
+    opacity: .9;
 }
 #updateClubSubmit:hover {
     opacity: .9;

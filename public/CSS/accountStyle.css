@@ -123,6 +123,10 @@ label{
     gap: 8px;
 }
 
+#cancelAddBtn:hover{
+    color: #ff0000;
+}
+
 @keyframes scaleIn {
   0% {
     transform: scale(0.9);

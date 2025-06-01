@@ -17,7 +17,7 @@
         <link href="{{asset('css/edit.css')}}" rel="stylesheet" />
         <link href="{{asset('css/student.css')}}" rel="stylesheet" />
         <link href="{{asset('css/mship.css')}}" rel="stylesheet" />
-
+        <link href="{{asset('css/reg.css')}}" rel="stylesheet" />
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
@@ -65,6 +65,7 @@
         <script src="{{ asset('JS/event/eventAdd.js') }}"></script>
         <script src="{{ asset('JS/event/deleteEvent.js') }}"></script>
 
+        <script src="{{ asset('JS/event_reg/eventRegistration.js') }}"></script>
 
 
         @push('scripts')
