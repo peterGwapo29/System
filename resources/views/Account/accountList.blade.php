@@ -68,7 +68,7 @@
                 </div>
 
                 <div class="flex justify-end gap-3 mt-4">
-                    <button type="submit" id="submitAddBtn" class="addbtnADD">Add</button>
+                    <button type="submit" id="submitAddBtn" class="addbtnADD">Add Account</button>
                 </div>
             </form>
         </div>

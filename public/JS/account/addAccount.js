@@ -37,7 +37,7 @@ document.getElementById('addAccountForm').addEventListener('submit', function (e
     };
 
     submitBtn.disabled = true;
-    submitBtn.textContent = 'Adding...';
+    submitBtn.textContent = 'Adding Account...';
 
     fetch(baseURL() + 'accounts/insert', {
         method: 'POST',
