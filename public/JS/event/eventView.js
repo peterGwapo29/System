@@ -13,7 +13,9 @@ new DataTable('#eventTable', {
     serverSide: true,
     columnDefs: [
         {targets: '_all', visible: true},
-        { targets: [3], width: '120px' },
+        { targets: [0], width: '100px' },
+        { targets: [1], width: '100px' },
+        { targets: [3], width: '200px' },
         {targets: [7], width: '42px',},
     ],
     columns: [
@@ -33,7 +35,14 @@ new DataTable('#eventTable', {
             data: 'event_name',
             name: 'event_name',
             title: 'Event Name',
-            className: 'text-left'
+            className: 'text-left',
+            render: function(data) {
+                const maxLength = 10;
+                if (data.length > maxLength) {
+                                    return `<span title="${data}">${data.substring(0, maxLength)}...</span>`;
+                                }
+                                return data;
+                            }
         },
         {
             data: 'event_date',
@@ -45,7 +54,14 @@ new DataTable('#eventTable', {
             data: 'venue',
             name: 'venue',
             title: 'Venue',
-            className: 'text-left'
+            className: 'text-left',
+            render: function(data) {
+                const maxLength = 10;
+                if (data.length > maxLength) {
+                                    return `<span title="${data}">${data.substring(0, maxLength)}...</span>`;
+                                }
+                                return data;
+                            }
         },
         {
             data: 'event_description',

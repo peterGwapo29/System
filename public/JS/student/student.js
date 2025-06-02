@@ -71,7 +71,7 @@ new DataTable('#studentTable', {
             data: null,
             title: 'Action',
             sortable: false,
-            render: function(data, type, row) {
+            render: function(row) {
                 if (row.status === 'Inactive') {
                     return `<span class="text-gray-400 italic">
                                 <a href="javascript:void(0)"

@@ -205,7 +205,7 @@ $(document).ready(function() {
         success: function(students) {
             const studentSelect = $('#student_id');
             students.forEach(student => {
-                studentSelect.append(`<option value="${student.student_id}">${student.name}</option>`);
+                studentSelect.append(`<option style="color: black;" value="${student.student_id}">${student.name}</option>`);
             });
         },
         error: function(xhr) {
@@ -220,10 +220,7 @@ $(document).ready(function() {
         success: function(events) {
             const eventSelect = $('#event_id');
             events.forEach(event => {
-                eventSelect.append(`<option value="${event.event_id}">${event.event_name}</option>`);
-                // confirmStatusBtn
-
-
+                eventSelect.append(`<option style="color: black;" value="${event.event_id}">${event.event_name}</option>`);
             });
         },
         error: function(xhr) {

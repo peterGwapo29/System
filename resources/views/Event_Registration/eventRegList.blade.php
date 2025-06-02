@@ -74,7 +74,8 @@
                             </label>
                             <div class="relative">
                                 <select id="student_id" name="student_id" required
-                                    class="cursor-pointer w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 appearance-none bg-white">
+                                    class="cursor-pointer w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 appearance-none bg-white"
+                                    size="1" onfocus="this.size=5" onblur="this.size=1" onchange="this.size=1">
                                     <option value="">Select a student</option>
                                 </select>
                             </div>
@@ -87,7 +88,8 @@
                             </label>
                             <div class="relative">
                                 <select id="event_id" name="event_id" required
-                                    class="cursor-pointer w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 appearance-none bg-white">
+                                    class="cursor-pointer w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 appearance-none bg-white"
+                                    size="1" onfocus="this.size=5" onblur="this.size=1" onchange="this.size=1">
                                     <option value="">Select an event</option>
                                 </select>
                             </div>

@@ -39,4 +39,23 @@ class AccountController extends Controller
             'data' => $user
         ], 201);
     }
+
+    public function delete($id)
+    {
+        $user = User::find($id);
+
+        if (!$user) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'User not found'
+            ], 404);
+        }
+
+        $user->delete();
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Account deleted successfully'
+        ]);
+    }
 }
